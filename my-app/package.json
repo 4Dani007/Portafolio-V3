@@ -9,15 +9,21 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "country-flag-icons": "^1.5.21",
+    "flag-icons": "^7.5.0",
+    "lucide-react": "^0.553.0",
+    "next": "latest",
+    "next-intl": "^4.5.3",
     "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "next": "latest"
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "babel-plugin-react-compiler": "1.0.0",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.4",
+    "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.0.2"
+    "eslint-config-next": "16.0.2",
+    "tailwindcss": "^4"
   }
 }
