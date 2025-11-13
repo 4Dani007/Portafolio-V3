@@ -1,6 +1,7 @@
 {
-    "name": "Daniel Bonilla",
-    "description": "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    "introduction": "Hola, soy Daniel Bonilla",
+    "profession": "Desarrollador Junior",
+    "description": "Desarrollador Junior con experiencia en desarrollo de software para arquitecturas BIM, sólido manejo de APIs de Autodesk (Revit API, Forge/APS), y conocimiento en automatización de flujos de trabajo para optimizar procesos en proyectos de construcción.",
     "projects": "Proyectos",
     "contact": "Contacto",
     "About Me": "Sobre mí"
