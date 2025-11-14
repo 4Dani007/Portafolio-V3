@@ -45,25 +45,74 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Menú desplegable móvil */}
+      {/* Overlay de fondo oscuro */}
       {menuOpen && (
-        <div className="md:hidden flex flex-col items-center gap-4 py-4 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-colors">
-          <a href="#" className="text-black dark:text-gray-300 hover:text-black dark:hover:text-white transition">
-            Blog
-          </a>
-          <a href="#" className="text-black dark:text-gray-300 hover:text-black dark:hover:text-white transition">
-            {t('projects')}
-          </a>
-          <a href="#" className="text-black dark:text-gray-300 hover:text-black dark:hover:text-white transition">
-            {t('About Me')}
-          </a>
-          <a href="#" className="text-black dark:text-gray-300 hover:text-black dark:hover:text-white transition">
-            {t('contact')}
-          </a>
-          <ThemeToggle />
-          <LanguageSwitcher />
-        </div>
+        <div 
+          className="md:hidden fixed inset-0 bg-black/50 z-40 transition-opacity"
+          onClick={() => setMenuOpen(false)}
+        />
       )}
+
+      {/* Sidebar móvil */}
+      <div 
+        className={`md:hidden fixed top-0 right-0 h-full w-64 bg-white dark:bg-zinc-900 z-50 shadow-xl transition-transform duration-300 ease-in-out ${
+          menuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Header de la sidebar con botón cerrar */}
+          <div className="flex items-center justify-between p-4 border-b border-zinc-200 dark:border-zinc-800">
+            <span className="text-lg font-semibold text-black dark:text-white">Menú</span>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 text-black dark:text-white transition"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          {/* Contenido de la sidebar */}
+          <div className="flex flex-col gap-2 p-4 flex-1">
+            <a 
+              href="#" 
+              className="text-black dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
+              onClick={() => setMenuOpen(false)}
+            >
+              Blog
+            </a>
+            <a 
+              href="#" 
+              className="text-black dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t('projects')}
+            </a>
+            <a 
+              href="#" 
+              className="text-black dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t('About Me')}
+            </a>
+            <a 
+              href="#" 
+              className="text-black dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t('contact')}
+            </a>
+            
+            {/* Separador */}
+            <div className="border-t border-zinc-200 dark:border-zinc-800 my-4" />
+            
+            {/* Controles */}
+            <div className="flex flex-col gap-3 px-4">
+              <ThemeToggle />
+              <LanguageSwitcher />
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }
