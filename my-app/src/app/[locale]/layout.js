@@ -17,7 +17,50 @@ export default async function LocaleLayout({children, params}) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  // Función para obtener el tema preferido
+                  function getThemePreference() {
+                    // 1. Verificar si hay un tema guardado en localStorage
+                    try {
+                      const savedTheme = localStorage.getItem('theme');
+                      if (savedTheme === 'dark' || savedTheme === 'light') {
+                        return savedTheme;
+                      }
+                    } catch (e) {
+                      // localStorage puede no estar disponible
+                    }
+                    // 2. Si no hay tema guardado, detectar preferencia del sistema
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                      return 'dark';
+                    }
+                    // 3. Por defecto, modo claro
+                    return 'light';
+                  }
+                  
+                  // Aplicar el tema antes de que se renderice la página
+                  const theme = getThemePreference();
+                  const html = document.documentElement;
+                  
+                  if (theme === 'dark') {
+                    html.classList.add('dark');
+                  } else {
+                    html.classList.remove('dark');
+                  }
+                } catch (e) {
+                  // En caso de error, asegurar que no esté en modo oscuro
+                  document.documentElement.classList.remove('dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}

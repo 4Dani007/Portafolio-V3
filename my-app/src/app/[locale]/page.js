@@ -2,31 +2,12 @@
 import Navbar from '../components/Navbar';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useTheme } from '../../hooks/useTheme';
 
 
 export default function HomePage() {
   const t = useTranslations();
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Verificar el tema inicial
-    const checkTheme = () => {
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      setIsDark(isDarkMode);
-    };
-    
-    checkTheme();
-    
-    // Observar cambios en la clase dark
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-    
-    return () => observer.disconnect();
-  }, []);
+  const { isDark } = useTheme();
 
   return (
     <>
