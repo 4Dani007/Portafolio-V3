@@ -11,6 +11,22 @@ export default function Navbar() {
     const { isDark, mounted } = useTheme();
     const t = useTranslations();
 
+    // Función para scroll suave a secciones
+    const handleScrollTo = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const offset = 80; // Altura de la navbar
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+        setMenuOpen(false); // Cerrar sidebar en móvil
+    };
+
     // Evitar render hasta que esté montado para que las clases dark funcionen
     if (!mounted) {
         return (
@@ -35,18 +51,18 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         
         {/* Logo / Título */}
-        <a 
-          href="/" 
-          className="text-xl font-semibold transition-colors"
+        <button
+          onClick={() => handleScrollTo('hero')}
+          className="text-xl font-semibold transition-colors text-left"
           style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
         >
           Daniel Bonilla Mosquera - DEV
-        </a>
+        </button>
 
         {/* Enlaces (Desktop) */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <a 
-            href="#" 
+            href="/blog" 
             className="transition"
             style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
             onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
@@ -54,33 +70,33 @@ export default function Navbar() {
           >
             Blog
           </a>
-          <a 
-            href="#" 
-            className="transition"
+          <button
+            onClick={() => handleScrollTo('projects')}
+            className="transition text-left"
             style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
             onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
             onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
           >
             {t('projects')}
-          </a>
-          <a 
-            href="#" 
-            className="transition"
+          </button>
+          <button
+            onClick={() => handleScrollTo('about')}
+            className="transition text-left"
             style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
             onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
             onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
           >
             {t('About Me')}
-          </a>
-          <a 
-            href="#" 
-            className="transition"
+          </button>
+          <button
+            onClick={() => handleScrollTo('contact')}
+            className="transition text-left"
             style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
             onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
             onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
           >
             {t('contact')}
-          </a>
+          </button>
           <ThemeToggle />
           <LanguageSwitcher />
         </div>
@@ -136,7 +152,7 @@ export default function Navbar() {
           {/* Contenido de la sidebar */}
           <div className="flex flex-col gap-2 p-4 flex-1">
             <a 
-              href="#" 
+              href="/blog" 
               className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
               style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
               onMouseEnter={(e) => {
@@ -151,9 +167,9 @@ export default function Navbar() {
             >
               Blog
             </a>
-            <a 
-              href="#" 
-              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
+            <button
+              onClick={() => handleScrollTo('projects')}
+              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
               style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
               onMouseEnter={(e) => {
                 e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
@@ -163,13 +179,12 @@ export default function Navbar() {
                 e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
                 e.target.style.backgroundColor = 'transparent';
               }}
-              onClick={() => setMenuOpen(false)}
             >
               {t('projects')}
-            </a>
-            <a 
-              href="#" 
-              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
+            </button>
+            <button
+              onClick={() => handleScrollTo('about')}
+              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
               style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
               onMouseEnter={(e) => {
                 e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
@@ -179,13 +194,12 @@ export default function Navbar() {
                 e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
                 e.target.style.backgroundColor = 'transparent';
               }}
-              onClick={() => setMenuOpen(false)}
             >
               {t('About Me')}
-            </a>
-            <a 
-              href="#" 
-              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
+            </button>
+            <button
+              onClick={() => handleScrollTo('contact')}
+              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
               style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
               onMouseEnter={(e) => {
                 e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
@@ -195,10 +209,9 @@ export default function Navbar() {
                 e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
                 e.target.style.backgroundColor = 'transparent';
               }}
-              onClick={() => setMenuOpen(false)}
             >
               {t('contact')}
-            </a>
+            </button>
             
             {/* Separador */}
             <div 
