@@ -4,10 +4,6 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useTheme } from '../../hooks/useTheme';
 import { Mail, Linkedin, Github } from 'lucide-react';
-import FadeInSection from '../components/FadeinSection';
-import ScrollSection from '../components/ScrollSection';
-import BlurInSection from '../components/BlurInSection';
-import FadeInUpSection from '../components/FadeInUpSection';
 
 export default function HomePage() {
   const t = useTranslations();
@@ -26,8 +22,6 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      
-      <BlurInSection>
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center p-6 pt-24">
         <div className="w-full max-w-6xl mx-auto">
@@ -81,9 +75,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      </BlurInSection>
 
-      <FadeInUpSection>
 
       {/* Projects Section */}
       <section id="projects" className="min-h-screen flex items-center justify-center p-6 py-20">
@@ -135,10 +127,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      </FadeInUpSection>
-
-      <FadeInSection>
 
       {/* About Section */}
       <section id="about" className="min-h-screen flex items-center justify-center p-6 py-20">
@@ -209,9 +197,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      </FadeInSection>
 
-      <ScrollSection>
       {/* Contact Section */}
       <section id="contact" className="min-h-screen flex items-center justify-center p-6 py-20">
         <div className="w-full max-w-4xl mx-auto text-center">
@@ -292,7 +278,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      </ScrollSection>
     </>
   );
 }
