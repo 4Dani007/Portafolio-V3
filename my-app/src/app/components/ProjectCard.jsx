@@ -2,7 +2,7 @@
 import { ExternalLink, Github, Star, GitFork, Calendar, Code } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
 import { useLocale } from 'next-intl';
-import { getProjectDescription } from '../../lib/projectTranslations';
+import { getProjectTitle, getProjectDescription } from '../../lib/projectTranslations';
 
 /**
  * Componente para mostrar una tarjeta de proyecto de GitHub
@@ -26,7 +26,13 @@ export default function ProjectCard({ project }) {
     return null;
   }
 
-  // Obtener descripción traducida
+  // Obtener título y descripción traducidos
+  const translatedTitle = getProjectTitle(
+    project.name,
+    locale,
+    project.name || ''
+  );
+  
   const translatedDescription = getProjectDescription(
     project.name,
     locale,
@@ -58,7 +64,7 @@ export default function ProjectCard({ project }) {
           className="text-xl font-semibold transition-colors flex-1 pr-2"
           style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
         >
-          {project.name}
+          {translatedTitle}
         </h3>
         <div className="flex gap-2 flex-shrink-0">
           {project.homepage && (
