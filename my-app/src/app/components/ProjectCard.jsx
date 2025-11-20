@@ -18,7 +18,7 @@ import { getProjectTitle, getProjectDescription } from '../../lib/projectTransla
  * @param {string} project.updatedAt - Fecha de última actualización
  * @param {Array} project.topics - Array de topics/etiquetas
  */
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, onClick }) {
   const { isDark } = useTheme();
   const locale = useLocale();
 
@@ -52,11 +52,21 @@ export default function ProjectCard({ project }) {
 
   return (
     <div
-      className="rounded-lg p-6 border transition-all hover:shadow-lg hover:scale-[1.02] flex flex-col h-full"
+      className="rounded-lg p-6 border transition-all hover:shadow-lg hover:scale-[1.02] flex flex-col h-full cursor-pointer"
       style={{
         backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
         borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)'
       }}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick?.();
+        }
+      }}
+      aria-label={`Ver detalles de ${translatedTitle}`}
     >
       {/* Header con nombre y enlaces */}
       <div className="flex items-start justify-between mb-4">
@@ -83,6 +93,7 @@ export default function ProjectCard({ project }) {
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
               }}
+              onClick={(e) => e.stopPropagation()}
               title="Ver demo"
             >
               <ExternalLink size={18} />
@@ -105,6 +116,7 @@ export default function ProjectCard({ project }) {
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
               }}
+              onClick={(e) => e.stopPropagation()}
               title="Ver en GitHub"
             >
               <Github size={18} />
@@ -127,6 +139,7 @@ export default function ProjectCard({ project }) {
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
               }}
+              onClick={(e) => e.stopPropagation()}
               title="Ver proyecto"
             >
               <ExternalLink size={18} />

@@ -4,8 +4,8 @@ const customProjects = [
         id: 'custom-1',
         name: 'custom-1',
         description: 'Conjunto de herramientas que aprovechan el API de Autodesk para la gestion de proyectos BIM360 y Autodesk Construction Cloud',
-        language: 'Python, React, Flask',
-        updatedAt: '2024-01-15T00:00:00Z',
+        language: 'Python • React • Flask • Autodesk API',
+        updatedAt: '2025-11-21T00:00:00Z',
         order: 1,
         isCustom: true
     }

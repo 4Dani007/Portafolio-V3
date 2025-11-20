@@ -6,6 +6,7 @@ import { useTheme } from '../../hooks/useTheme';
 import { Mail, Linkedin, Github } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
+import ProjectModal from '../components/ProjectModal';
 import { getCustomProjects } from '../../lib/customProjects';
 import { getProjectOrder } from '../../lib/projectOrder';
 
@@ -16,6 +17,7 @@ export default function HomePage() {
   const [loadingRepos, setLoadingRepos] = useState(true);
   const [reposError, setReposError] = useState(null);
   const [allProjects, setAllProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   // Obtener repositorios de GitHub y combinar con proyectos personalizados
   useEffect(() => {
@@ -237,7 +239,11 @@ export default function HomePage() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
               {allProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard 
+                  key={project.id} 
+                  project={project}
+                  onClick={() => setSelectedProject(project)}
+                />
               ))}
             </div>
           )}
@@ -394,6 +400,14 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Modal de proyecto */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </>
   );
 }
