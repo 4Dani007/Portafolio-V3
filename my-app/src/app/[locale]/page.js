@@ -4,10 +4,43 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useTheme } from '../../hooks/useTheme';
 import { Mail, Linkedin, Github } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import ProjectCard from '../components/ProjectCard';
 
 export default function HomePage() {
   const t = useTranslations();
   const { isDark, mounted } = useTheme();
+  const [repos, setRepos] = useState([]);
+  const [loadingRepos, setLoadingRepos] = useState(true);
+  const [reposError, setReposError] = useState(null);
+
+  // Obtener repositorios de GitHub
+  useEffect(() => {
+    async function fetchRepos() {
+      try {
+        setLoadingRepos(true);
+        setReposError(null);
+        
+        const response = await fetch('/api/github/repos?sort=updated&per_page=6&type=owner');
+        const data = await response.json();
+        
+        if (data.success && data.data) {
+          setRepos(data.data);
+        } else {
+          setReposError(data.error || 'Failed to load projects');
+        }
+      } catch (error) {
+        console.error('Error fetching repos:', error);
+        setReposError('Failed to load projects');
+      } finally {
+        setLoadingRepos(false);
+      }
+    }
+    
+    if (mounted) {
+      fetchRepos();
+    }
+  }, [mounted]);
 
   if (!mounted) {
     return (
@@ -95,36 +128,64 @@ export default function HomePage() {
             </p>
           </div>
           
-          {/* Placeholder para proyectos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((item) => (
-              <div
-                key={item}
-                className="rounded-lg p-6 border transition-colors"
-                style={{
-                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)'
-                }}
+          {/* Lista de proyectos */}
+          {loadingRepos ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-lg p-6 border animate-pulse"
+                  style={{
+                    backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
+                    borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)'
+                  }}
+                >
+                  <div 
+                    className="h-32 rounded-lg mb-4"
+                    style={{ backgroundColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)' }}
+                  />
+                  <div 
+                    className="h-4 rounded mb-2"
+                    style={{ backgroundColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)' }}
+                  />
+                  <div 
+                    className="h-3 rounded w-3/4"
+                    style={{ backgroundColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)' }}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : reposError ? (
+            <div className="text-center py-12">
+              <p 
+                className="text-lg transition-colors mb-4"
+                style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
               >
-                <div 
-                  className="h-48 rounded-lg mb-4 transition-colors"
-                  style={{ backgroundColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)' }}
-                />
-                <h3 
-                  className="text-xl font-semibold mb-2 transition-colors"
-                  style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
-                >
-                  Project {item}
-                </h3>
-                <p 
-                  className="text-sm transition-colors"
-                  style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
-                >
-                  {t('projectsSection.comingSoon')}
-                </p>
-              </div>
-            ))}
-          </div>
+                {reposError}
+              </p>
+              <p 
+                className="text-sm transition-colors"
+                style={{ color: isDark ? 'rgb(161, 161, 170)' : 'rgb(113, 113, 122)' }}
+              >
+                {t('projectsSection.comingSoon')}
+              </p>
+            </div>
+          ) : repos.length === 0 ? (
+            <div className="text-center py-12">
+              <p 
+                className="text-lg transition-colors"
+                style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+              >
+                {t('projectsSection.comingSoon')}
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {repos.map((repo) => (
+                <ProjectCard key={repo.id} project={repo} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

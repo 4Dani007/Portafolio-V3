@@ -13,7 +13,7 @@ export default function ThemeToggle() {
     // Función para obtener el tema actual
     const getCurrentTheme = () => {
       // Verificar localStorage primero
-      const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark' || savedTheme === 'light') {
         return savedTheme === 'dark';
       }
@@ -40,8 +40,8 @@ export default function ThemeToggle() {
       // Solo aplicar si no hay tema guardado en localStorage
       if (!localStorage.getItem('theme')) {
         if (e.matches) {
-          document.documentElement.classList.add('dark');
-          setIsDark(true);
+      document.documentElement.classList.add('dark');
+      setIsDark(true);
         } else {
           document.documentElement.classList.remove('dark');
           setIsDark(false);
