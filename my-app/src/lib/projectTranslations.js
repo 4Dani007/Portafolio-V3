@@ -1,4 +1,15 @@
 const projectTranslations = {
+
+  'custom-1': {
+        title: {
+          es: 'Herramientas de gestion BIM360 y Autodesk Construction Cloud',
+          en: 'BIM360 and Autodesk Construction Cloud management tools'
+        },
+        description: {
+          es: 'Conjunto de herramientas que aprovechan el API de Autodesk para la gestion de proyectos BIM360 y Autodesk Construction Cloud',
+          en: 'Set of tools that leverage the Autodesk API to manage BIM360 and Autodesk Construction Cloud projects'
+        }
+      },
     'Portafolio-V3': {
         title: {
             es: 'Portafolio Personal',

@@ -6,6 +6,8 @@ import { useTheme } from '../../hooks/useTheme';
 import { Mail, Linkedin, Github } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
+import { getCustomProjects } from '../../lib/customProjects';
+import { getProjectOrder } from '../../lib/projectOrder';
 
 export default function HomePage() {
   const t = useTranslations();
@@ -13,25 +15,78 @@ export default function HomePage() {
   const [repos, setRepos] = useState([]);
   const [loadingRepos, setLoadingRepos] = useState(true);
   const [reposError, setReposError] = useState(null);
+  const [allProjects, setAllProjects] = useState([]);
 
-  // Obtener repositorios de GitHub
+  // Obtener repositorios de GitHub y combinar con proyectos personalizados
   useEffect(() => {
     async function fetchRepos() {
       try {
         setLoadingRepos(true);
         setReposError(null);
         
+        // Obtener proyectos de GitHub
         const response = await fetch('/api/github/repos?sort=updated&per_page=6&type=owner');
         const data = await response.json();
         
+        let githubRepos = [];
         if (data.success && data.data) {
-          setRepos(data.data);
+          githubRepos = data.data;
         } else {
           setReposError(data.error || 'Failed to load projects');
         }
+
+        // Obtener proyectos personalizados
+        const customProjects = getCustomProjects();
+
+        // Combinar ambos tipos de proyectos
+        const combined = [...customProjects, ...githubRepos];
+
+        // Agregar orden a proyectos de GitHub desde projectOrder.js
+        const projectsWithOrder = combined.map(project => {
+          // Si es proyecto personalizado, ya tiene su campo 'order' si está definido
+          if (project.isCustom) {
+            return project;
+          }
+          
+          // Si es proyecto de GitHub, buscar orden en projectOrder.js
+          const order = getProjectOrder(project.name);
+          if (order !== undefined) {
+            return { ...project, order };
+          }
+          
+          return project;
+        });
+
+        // Ordenar proyectos
+        // Prioridad: 1. Campo 'order' (más bajo = primero), 2. Fecha de actualización (más reciente = primero)
+        projectsWithOrder.sort((a, b) => {
+          // Si ambos tienen campo 'order', ordenar por ese campo
+          if (a.order !== undefined && b.order !== undefined) {
+            return a.order - b.order;
+          }
+          
+          // Si solo uno tiene 'order', ese va primero
+          if (a.order !== undefined) {
+            return -1;
+          }
+          if (b.order !== undefined) {
+            return 1;
+          }
+          
+          // Si ninguno tiene 'order', ordenar por fecha (más reciente primero)
+          const dateA = new Date(a.updatedAt || 0);
+          const dateB = new Date(b.updatedAt || 0);
+          return dateB - dateA;
+        });
+
+        setRepos(githubRepos);
+        setAllProjects(projectsWithOrder);
       } catch (error) {
         console.error('Error fetching repos:', error);
         setReposError('Failed to load projects');
+        // Aún así, mostrar proyectos personalizados si hay error
+        const customProjects = getCustomProjects();
+        setAllProjects(customProjects);
       } finally {
         setLoadingRepos(false);
       }
@@ -170,7 +225,7 @@ export default function HomePage() {
                 {t('projectsSection.comingSoon')}
               </p>
             </div>
-          ) : repos.length === 0 ? (
+          ) : allProjects.length === 0 ? (
             <div className="text-center py-12">
               <p 
                 className="text-lg transition-colors"
@@ -180,9 +235,9 @@ export default function HomePage() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {repos.map((repo) => (
-                <ProjectCard key={repo.id} project={repo} />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+              {allProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
               ))}
             </div>
           )}

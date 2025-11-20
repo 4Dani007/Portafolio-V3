@@ -52,7 +52,7 @@ export default function ProjectCard({ project }) {
 
   return (
     <div
-      className="rounded-lg p-6 border transition-all hover:shadow-lg hover:scale-[1.02]"
+      className="rounded-lg p-6 border transition-all hover:shadow-lg hover:scale-[1.02] flex flex-col h-full"
       style={{
         backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
         borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)'
@@ -88,32 +88,57 @@ export default function ProjectCard({ project }) {
               <ExternalLink size={18} />
             </a>
           )}
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 rounded-lg transition-colors hover:scale-110"
-            style={{
-              backgroundColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)',
-              color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = isDark ? 'rgb(82, 82, 91)' : 'rgb(228, 228, 231)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
-            }}
-            title="Ver en GitHub"
-          >
-            <Github size={18} />
-          </a>
+          {/* Solo mostrar botón de GitHub si NO es un proyecto personalizado */}
+          {!project.isCustom && project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg transition-colors hover:scale-110"
+              style={{
+                backgroundColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)',
+                color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = isDark ? 'rgb(82, 82, 91)' : 'rgb(228, 228, 231)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+              }}
+              title="Ver en GitHub"
+            >
+              <Github size={18} />
+            </a>
+          )}
+          {/* Para proyectos personalizados, mostrar botón de enlace si hay URL */}
+          {project.isCustom && project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg transition-colors hover:scale-110"
+              style={{
+                backgroundColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)',
+                color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = isDark ? 'rgb(82, 82, 91)' : 'rgb(228, 228, 231)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+              }}
+              title="Ver proyecto"
+            >
+              <ExternalLink size={18} />
+            </a>
+          )}
         </div>
       </div>
 
       {/* Descripción */}
       {translatedDescription && (
         <p 
-          className="text-sm mb-4 line-clamp-3 transition-colors"
+          className="text-sm mb-4 line-clamp-3 transition-colors flex-grow"
           style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
         >
           {translatedDescription}
@@ -176,9 +201,9 @@ export default function ProjectCard({ project }) {
         )}
       </div>
 
-      {/* Topics/Tags */}
+      {/* Topics/Tags - Se empuja hacia abajo con mt-auto */}
       {project.topics && project.topics.length > 0 && (
-        <div className="flex flex-wrap gap-2 pt-4 border-t"
+        <div className="flex flex-wrap gap-2 pt-4 border-t mt-auto"
           style={{ borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)' }}
         >
           {project.topics.slice(0, 4).map((topic) => (
