@@ -8,7 +8,7 @@
     "hero": {
         "title": "Hola, soy Daniel Bonilla",
         "subtitle": "Desarrollador Junior",
-        "description": "Desarrollador Junior con experiencia en desarrollo de software para arquitecturas BIM, sólido manejo de APIs de Autodesk (Revit API, Forge/APS), y conocimiento en automatización de flujos de trabajo para optimizar procesos en proyectos de construcción."
+        "description": "Desarrollador Junior con experiencia en desarrollo de software para metodologias BIM, sólido manejo de APIs de Autodesk (Revit API, Forge/APS), y conocimiento en automatización de flujos de trabajo para optimizar procesos en proyectos de construcción."
     },
     "projectsSection": {
         "title": "Proyectos",
@@ -17,7 +17,7 @@
     },
     "aboutSection": {
         "title": "Sobre Mí",
-        "description": "Soy un Desarrollador Junior especializado en arquitecturas BIM con experiencia en APIs de Autodesk. Me enfoco en automatizar flujos de trabajo y optimizar procesos en proyectos de construcción.",
+        "description": "Soy un Desarrollador Junior especializado en metodologias BIM con experiencia en APIs de Autodesk. Me enfoco en automatizar flujos de trabajo y optimizar procesos en proyectos de construcción.",
         "skills": "Habilidades",
         "experience": "Experiencia"
     },
