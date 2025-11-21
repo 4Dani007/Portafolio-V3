@@ -2,43 +2,60 @@
 
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function GoogleAnalytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [utmParams, setUtmParams] = useState({});
 
-  // Extraer parámetros UTM de la URL
-  const getUTMParams = () => {
-    if (typeof window === 'undefined') return {};
+  // Extraer parámetros UTM de la URL (tanto del servidor como del cliente)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
     
     const params = new URLSearchParams(window.location.search);
-    const utmParams = {};
+    const extracted = {};
     
     // Parámetros UTM estándar
     const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
     utmKeys.forEach(key => {
       const value = params.get(key);
       if (value) {
-        utmParams[key] = value;
+        extracted[key] = value;
       }
     });
     
-    return utmParams;
-  };
+    setUtmParams(extracted);
+    
+    // Guardar UTM params en sessionStorage para persistir durante la sesión
+    if (Object.keys(extracted).length > 0) {
+      sessionStorage.setItem('utm_params', JSON.stringify(extracted));
+    }
+  }, [searchParams]);
 
   // Track page views when route changes (Next.js App Router)
   useEffect(() => {
     if (gaId && typeof window !== 'undefined' && window.gtag) {
-      const utmParams = getUTMParams();
+      // Intentar obtener UTM params de sessionStorage si no están en la URL actual
+      let paramsToUse = utmParams;
+      if (Object.keys(paramsToUse).length === 0) {
+        try {
+          const stored = sessionStorage.getItem('utm_params');
+          if (stored) {
+            paramsToUse = JSON.parse(stored);
+          }
+        } catch (e) {
+          // Ignorar errores de parsing
+        }
+      }
       
       window.gtag('config', gaId, {
         page_path: pathname,
-        ...utmParams, // Incluir parámetros UTM automáticamente
+        ...paramsToUse, // Incluir parámetros UTM automáticamente
       });
     }
-  }, [pathname, searchParams, gaId]);
+  }, [pathname, utmParams, gaId]);
 
   // Detectar si Google Analytics está bloqueado (útil para debugging)
   useEffect(() => {
