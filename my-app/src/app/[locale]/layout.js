@@ -2,6 +2,7 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import '../globals.css';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 
 export default async function LocaleLayout({children, params}) {
   // 👇 Esperar los params antes de usarlos
@@ -62,6 +63,7 @@ export default async function LocaleLayout({children, params}) {
         />
       </head>
       <body>
+        <GoogleAnalytics />
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
