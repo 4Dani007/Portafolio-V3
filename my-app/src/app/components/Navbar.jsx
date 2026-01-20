@@ -6,27 +6,40 @@ import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslations, useLocale } from 'next-intl';
 import { useTheme } from '../../hooks/useTheme';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { isDark, mounted } = useTheme();
     const t = useTranslations();
     const locale = useLocale();
+    const pathname = usePathname();
+    const router = useRouter();
 
-    // Función para scroll suave a secciones
-    const handleScrollTo = (sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            const offset = 80; // Altura de la navbar
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
+    // Detectar si estamos en la página principal
+    const isHomePage = pathname === `/${locale}` || pathname === '/';
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
+    // Función para navegar a secciones
+    const handleNavigateToSection = (sectionId) => {
         setMenuOpen(false); // Cerrar sidebar en móvil
+        
+        if (isHomePage) {
+            // Si estamos en la página principal, hacer scroll a la sección
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offset = 80; // Altura de la navbar
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        } else {
+            // Si estamos en otra página, navegar a la página principal con hash
+            router.push(`/${locale}#${sectionId}`);
+        }
     };
 
     // Evitar render hasta que esté montado para que las clases dark funcionen
@@ -53,18 +66,18 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         
         {/* Logo / Título */}
-        <button
-          onClick={() => handleScrollTo('hero')}
+        <Link
+          href={`/${locale}`}
           className="text-xl font-semibold transition-colors text-left"
           style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
         >
           Daniel Bonilla Mosquera - DEV
-        </button>
+        </Link>
 
         {/* Enlaces (Desktop) */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <button
-            onClick={() => handleScrollTo('projects')}
+            onClick={() => handleNavigateToSection('projects')}
             className="transition text-left"
             style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
             onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
@@ -73,7 +86,7 @@ export default function Navbar() {
             {t('projects')}
           </button>
           <button
-            onClick={() => handleScrollTo('about')}
+            onClick={() => handleNavigateToSection('about')}
             className="transition text-left"
             style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
             onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
@@ -91,7 +104,7 @@ export default function Navbar() {
             {t('blog')}
           </Link>
           <button
-            onClick={() => handleScrollTo('contact')}
+            onClick={() => handleNavigateToSection('contact')}
             className="transition text-left"
             style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
             onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
@@ -154,7 +167,7 @@ export default function Navbar() {
           {/* Contenido de la sidebar */}
           <div className="flex flex-col gap-2 p-4 flex-1">
             <button
-              onClick={() => handleScrollTo('projects')}
+              onClick={() => handleNavigateToSection('projects')}
               className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
               style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
               onMouseEnter={(e) => {
@@ -169,7 +182,7 @@ export default function Navbar() {
               {t('projects')}
             </button>
             <button
-              onClick={() => handleScrollTo('about')}
+              onClick={() => handleNavigateToSection('about')}
               className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
               style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
               onMouseEnter={(e) => {
@@ -200,7 +213,7 @@ export default function Navbar() {
               {t('blog')}
             </Link>
             <button
-              onClick={() => handleScrollTo('contact')}
+              onClick={() => handleNavigateToSection('contact')}
               className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
               style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
               onMouseEnter={(e) => {

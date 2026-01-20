@@ -19,6 +19,36 @@ export default function HomePage() {
   const [allProjects, setAllProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Manejar scroll a secciones cuando se navega con hash
+  useEffect(() => {
+    if (!mounted) return;
+
+    const handleHashScroll = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const offset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 100);
+      }
+    };
+
+    // Ejecutar al montar si hay hash
+    handleHashScroll();
+
+    // Escuchar cambios en el hash
+    window.addEventListener('hashchange', handleHashScroll);
+    return () => window.removeEventListener('hashchange', handleHashScroll);
+  }, [mounted]);
+
   // Obtener repositorios de GitHub y combinar con proyectos personalizados
   useEffect(() => {
     async function fetchRepos() {
