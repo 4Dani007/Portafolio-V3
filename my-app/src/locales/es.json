@@ -27,5 +27,18 @@
         "email": "Correo",
         "linkedin": "LinkedIn",
         "github": "GitHub"
+    },
+    "blog": "Blog",
+    "blogSection": {
+        "title": "Blog",
+        "subtitle": "Artículos sobre desarrollo, BIM y Autodesk APIs",
+        "readMore": "Leer más",
+        "backToBlog": "Volver al blog",
+        "publishedOn": "Publicado el",
+        "readingTime": "Tiempo de lectura",
+        "category": "Categoría",
+        "tags": "Etiquetas",
+        "noPosts": "No hay artículos disponibles aún",
+        "comingSoon": "Más artículos próximamente..."
     }
 }

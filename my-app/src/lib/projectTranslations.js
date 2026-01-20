@@ -1,5 +1,3 @@
-import { TableColumnsSplit } from "lucide-react";
-
 const projectTranslations = {
 
   'custom-1': {

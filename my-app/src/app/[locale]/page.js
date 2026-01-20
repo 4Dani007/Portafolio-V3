@@ -338,7 +338,7 @@ export default function HomePage() {
           
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
             <a
-              href="mailto:tu-email@ejemplo.com"
+              href={process.env.NEXT_PUBLIC_CONTACT_EMAIL ? `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}` : "#"}
               className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-colors hover:scale-105"
               style={{
                 backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
@@ -350,53 +350,63 @@ export default function HomePage() {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+              }}
+              onClick={(e) => {
+                if (!process.env.NEXT_PUBLIC_CONTACT_EMAIL) {
+                  e.preventDefault();
+                  alert('Email no configurado. Por favor, configura NEXT_PUBLIC_CONTACT_EMAIL en las variables de entorno.');
+                }
               }}
             >
               <Mail size={20} />
               <span>{t('contactSection.email')}</span>
             </a>
             
-            <a
-              href="https://linkedin.com/in/tu-perfil"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-colors hover:scale-105"
-              style={{
-                backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-                borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
-                color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
-              }}
-            >
-              <Linkedin size={20} />
-              <span>{t('contactSection.linkedin')}</span>
-            </a>
+            {process.env.NEXT_PUBLIC_LINKEDIN_URL && (
+              <a
+                href={process.env.NEXT_PUBLIC_LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-colors hover:scale-105"
+                style={{
+                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
+                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                }}
+              >
+                <Linkedin size={20} />
+                <span>{t('contactSection.linkedin')}</span>
+              </a>
+            )}
             
-            <a
-              href="https://github.com/tu-usuario"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-colors hover:scale-105"
-              style={{
-                backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-                borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
-                color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
-              }}
-            >
-              <Github size={20} />
-              <span>{t('contactSection.github')}</span>
-            </a>
+            {process.env.NEXT_PUBLIC_GITHUB_URL && (
+              <a
+                href={process.env.NEXT_PUBLIC_GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-colors hover:scale-105"
+                style={{
+                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
+                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                }}
+              >
+                <Github size={20} />
+                <span>{t('contactSection.github')}</span>
+              </a>
+            )}
           </div>
         </div>
       </section>

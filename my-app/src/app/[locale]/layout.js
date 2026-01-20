@@ -4,6 +4,75 @@ import {notFound} from 'next/navigation';
 import '../globals.css';
 import GoogleAnalytics from '../components/GoogleAnalytics';
 
+// Metadata dinámica para SEO
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const isES = locale === 'es';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dev-4daniel.vercel.app';
+  
+  return {
+    title: isES 
+      ? 'Daniel Bonilla Mosquera - Desarrollador Junior | Portfolio'
+      : 'Daniel Bonilla Mosquera - Junior Developer | Portfolio',
+    description: isES
+      ? 'Desarrollador Junior especializado en metodologías BIM con experiencia en APIs de Autodesk (Revit API, Forge/APS) y automatización de workflows en proyectos de construcción.'
+      : 'Junior Developer specialized in BIM methodologies with experience in Autodesk APIs (Revit API, Forge/APS) and workflow automation in construction projects.',
+    keywords: isES
+      ? 'desarrollador, BIM, Autodesk API, Revit API, Forge, APS, construcción, automatización, portfolio'
+      : 'developer, BIM, Autodesk API, Revit API, Forge, APS, construction, automation, portfolio',
+    authors: [{ name: 'Daniel Bonilla Mosquera' }],
+    creator: 'Daniel Bonilla Mosquera',
+    openGraph: {
+      type: 'website',
+      locale: locale,
+      url: `${baseUrl}/${locale}`,
+      siteName: 'Daniel Bonilla - Portfolio',
+      title: isES 
+        ? 'Daniel Bonilla Mosquera - Desarrollador Junior'
+        : 'Daniel Bonilla Mosquera - Junior Developer',
+      description: isES
+        ? 'Desarrollador Junior especializado en metodologías BIM con experiencia en APIs de Autodesk'
+        : 'Junior Developer specialized in BIM methodologies with experience in Autodesk APIs',
+      images: [
+        {
+          url: `${baseUrl}/images/sketch-draw.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Daniel Bonilla Portfolio',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: isES 
+        ? 'Daniel Bonilla Mosquera - Desarrollador Junior'
+        : 'Daniel Bonilla Mosquera - Junior Developer',
+      description: isES
+        ? 'Desarrollador Junior especializado en metodologías BIM'
+        : 'Junior Developer specialized in BIM methodologies',
+      images: [`${baseUrl}/images/sketch-draw.png`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages: {
+        'es': `${baseUrl}/es`,
+        'en': `${baseUrl}/en`,
+      },
+    },
+  };
+}
+
 export default async function LocaleLayout({children, params}) {
   // 👇 Esperar los params antes de usarlos
   const {locale} = await params;

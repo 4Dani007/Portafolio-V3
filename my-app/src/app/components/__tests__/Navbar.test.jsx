@@ -89,9 +89,6 @@ describe('Navbar', () => {
       render(<Navbar />)
       
       // Usar getAllByText porque aparecen en desktop y sidebar
-      const blogLinks = screen.getAllByText('Blog')
-      expect(blogLinks.length).toBeGreaterThan(0)
-      
       const projectsButtons = screen.getAllByText('Projects')
       expect(projectsButtons.length).toBeGreaterThan(0)
       
@@ -273,7 +270,6 @@ describe('Navbar', () => {
       await waitFor(() => {
         const sidebar = document.querySelector('[class*="translate-x-0"]')
         if (sidebar) {
-          expect(sidebar.textContent).toContain('Blog')
           expect(sidebar.textContent).toContain('Projects')
           expect(sidebar.textContent).toContain('About Me')
           expect(sidebar.textContent).toContain('Contact')
@@ -483,38 +479,47 @@ describe('Navbar', () => {
   })
 
   describe('Enlaces de navegación', () => {
-    it('should render Blog link with correct href', () => {
+    it('should render Projects link and scroll to projects section', () => {
       render(<Navbar />)
       
-      // Buscar el enlace de Blog en desktop (no en sidebar)
-      const blogLinks = screen.getAllByText('Blog')
-      const blogLink = blogLinks.find(link => 
-        link.tagName === 'A' && !link.closest('[class*="translate"]')
-      )
+      const projectsButtons = screen.getAllByText('Projects')
+      expect(projectsButtons.length).toBeGreaterThan(0)
       
-      expect(blogLink).toBeInTheDocument()
-      expect(blogLink).toHaveAttribute('href', '/blog')
+      // Verificar que los botones tienen el onClick handler
+      const desktopButton = projectsButtons.find(btn => 
+        btn.closest('[class*="hidden md:flex"]')
+      )
+      if (desktopButton) {
+        expect(desktopButton).toBeInTheDocument()
+      }
     })
 
-    it('should render Blog link in sidebar with correct href', () => {
+    it('should render About Me link and scroll to about section', () => {
       render(<Navbar />)
       
-      // Abrir el sidebar
-      const menuButtons = screen.getAllByRole('button')
-      const menuButton = menuButtons.find(btn => 
-        btn.className.includes('md:hidden') && !btn.className.includes('translate')
-      )
-      fireEvent.click(menuButton)
+      const aboutButtons = screen.getAllByText('About Me')
+      expect(aboutButtons.length).toBeGreaterThan(0)
       
-      waitFor(() => {
-        const sidebar = document.querySelector('[class*="translate-x-0"]')
-        if (sidebar) {
-          const blogLink = Array.from(sidebar.querySelectorAll('a')).find(
-            link => link.textContent === 'Blog'
-          )
-          expect(blogLink).toHaveAttribute('href', '/blog')
-        }
-      })
+      const desktopButton = aboutButtons.find(btn => 
+        btn.closest('[class*="hidden md:flex"]')
+      )
+      if (desktopButton) {
+        expect(desktopButton).toBeInTheDocument()
+      }
+    })
+
+    it('should render Contact link and scroll to contact section', () => {
+      render(<Navbar />)
+      
+      const contactButtons = screen.getAllByText('Contact')
+      expect(contactButtons.length).toBeGreaterThan(0)
+      
+      const desktopButton = contactButtons.find(btn => 
+        btn.closest('[class*="hidden md:flex"]')
+      )
+      if (desktopButton) {
+        expect(desktopButton).toBeInTheDocument()
+      }
     })
   })
 

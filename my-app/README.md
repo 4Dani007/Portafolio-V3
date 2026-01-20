@@ -339,18 +339,16 @@ El proyecto incluye documentación detallada en la carpeta `docs/`:
 - ✅ Optimizaciones de rendimiento (hook compartido)
 - ✅ Documentación completa
 
+
 ### 🚧 En Desarrollo
 
 - ⏳ Páginas adicionales (About, Projects, Blog)
 - ⏳ TypeScript strict mode
-- ⏳ Testing (Jest + React Testing Library)
 
 ### 📋 Pendiente
 
-- ⏳ SEO avanzado (metadata dinámica, sitemap)
 - ⏳ CMS para blog
-- ⏳ Analytics
-- ⏳ PWA
+- ⏳ PWA avanzado (service worker, offline support)
 
 ## 📄 Licencia
 

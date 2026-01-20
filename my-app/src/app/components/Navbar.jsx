@@ -3,13 +3,15 @@ import {Menu, X} from 'lucide-react';
 import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useTheme } from '../../hooks/useTheme';
+import Link from 'next/link';
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { isDark, mounted } = useTheme();
     const t = useTranslations();
+    const locale = useLocale();
 
     // Función para scroll suave a secciones
     const handleScrollTo = (sectionId) => {
@@ -61,15 +63,6 @@ export default function Navbar() {
 
         {/* Enlaces (Desktop) */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a 
-            href="/blog" 
-            className="transition"
-            style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
-            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
-            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
-          >
-            Blog
-          </a>
           <button
             onClick={() => handleScrollTo('projects')}
             className="transition text-left"
@@ -88,6 +81,15 @@ export default function Navbar() {
           >
             {t('About Me')}
           </button>
+          <Link
+            href={`/${locale}/blog`}
+            className="transition text-left"
+            style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
+            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
+            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
+          >
+            {t('blog')}
+          </Link>
           <button
             onClick={() => handleScrollTo('contact')}
             className="transition text-left"
@@ -151,22 +153,6 @@ export default function Navbar() {
 
           {/* Contenido de la sidebar */}
           <div className="flex flex-col gap-2 p-4 flex-1">
-            <a 
-              href="/blog" 
-              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition"
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
-              onMouseEnter={(e) => {
-                e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
-                e.target.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(244, 244, 245)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
-                e.target.style.backgroundColor = 'transparent';
-              }}
-              onClick={() => setMenuOpen(false)}
-            >
-              Blog
-            </a>
             <button
               onClick={() => handleScrollTo('projects')}
               className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
@@ -197,6 +183,22 @@ export default function Navbar() {
             >
               {t('About Me')}
             </button>
+            <Link
+              href={`/${locale}/blog`}
+              onClick={() => setMenuOpen(false)}
+              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
+              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
+              onMouseEnter={(e) => {
+                e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
+                e.target.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(244, 244, 245)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
+                e.target.style.backgroundColor = 'transparent';
+              }}
+            >
+              {t('blog')}
+            </Link>
             <button
               onClick={() => handleScrollTo('contact')}
               className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
