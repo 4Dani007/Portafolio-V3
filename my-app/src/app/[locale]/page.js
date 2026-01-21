@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useTheme } from '../../hooks/useTheme';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, Instagram, Twitter } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import ProjectModal from '../components/ProjectModal';
@@ -366,10 +366,11 @@ export default function HomePage() {
             {t('contactSection.subtitle')}
           </p>
           
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            {/* Email - Siempre visible */}
             <a
               href={process.env.NEXT_PUBLIC_CONTACT_EMAIL ? `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}` : "#"}
-              className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-colors hover:scale-105"
+              className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
               style={{
                 backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
                 borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
@@ -384,7 +385,7 @@ export default function HomePage() {
               onClick={(e) => {
                 if (!process.env.NEXT_PUBLIC_CONTACT_EMAIL) {
                   e.preventDefault();
-                  alert('Email no configurado. Por favor, configura NEXT_PUBLIC_CONTACT_EMAIL en las variables de entorno.');
+                  alert(t('contactSection.emailNotConfigured'));
                 }
               }}
             >
@@ -392,12 +393,13 @@ export default function HomePage() {
               <span>{t('contactSection.email')}</span>
             </a>
             
+            {/* LinkedIn */}
             {process.env.NEXT_PUBLIC_LINKEDIN_URL && (
               <a
                 href={process.env.NEXT_PUBLIC_LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-colors hover:scale-105"
+                className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
                 style={{
                   backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
                   borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
@@ -415,12 +417,13 @@ export default function HomePage() {
               </a>
             )}
             
+            {/* GitHub */}
             {process.env.NEXT_PUBLIC_GITHUB_URL && (
               <a
                 href={process.env.NEXT_PUBLIC_GITHUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-colors hover:scale-105"
+                className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
                 style={{
                   backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
                   borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
@@ -435,6 +438,54 @@ export default function HomePage() {
               >
                 <Github size={20} />
                 <span>{t('contactSection.github')}</span>
+              </a>
+            )}
+            
+            {/* Instagram */}
+            {process.env.NEXT_PUBLIC_INSTAGRAM_URL && (
+              <a
+                href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
+                style={{
+                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
+                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                }}
+              >
+                <Instagram size={20} />
+                <span>{t('contactSection.instagram')}</span>
+              </a>
+            )}
+            
+            {/* Twitter/X */}
+            {process.env.NEXT_PUBLIC_TWITTER_URL && (
+              <a
+                href={process.env.NEXT_PUBLIC_TWITTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
+                style={{
+                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
+                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                }}
+              >
+                <Twitter size={20} />
+                <span>{t('contactSection.twitter')}</span>
               </a>
             )}
           </div>

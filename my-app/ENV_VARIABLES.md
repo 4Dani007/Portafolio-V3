@@ -17,6 +17,8 @@ GITHUB_TOKEN=ghp_tu_token_aqui  # Opcional pero recomendado para evitar rate lim
 NEXT_PUBLIC_CONTACT_EMAIL=tu-email@ejemplo.com
 NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/in/tu-perfil
 NEXT_PUBLIC_GITHUB_URL=https://github.com/tu-usuario
+NEXT_PUBLIC_INSTAGRAM_URL=https://instagram.com/tu-perfil  # Opcional
+NEXT_PUBLIC_TWITTER_URL=https://twitter.com/tu-perfil  # Opcional
 ```
 
 ### SEO y Analytics

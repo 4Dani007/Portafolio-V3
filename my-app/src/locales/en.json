@@ -26,7 +26,10 @@
         "subtitle": "Let's work together",
         "email": "Email",
         "linkedin": "LinkedIn",
-        "github": "GitHub"
+        "github": "GitHub",
+        "instagram": "Instagram",
+        "twitter": "Twitter",
+        "emailNotConfigured": "Email not configured. Please set NEXT_PUBLIC_CONTACT_EMAIL in environment variables."
     },
     "blog": "Blog",
     "blogSection": {
