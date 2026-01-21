@@ -38,13 +38,13 @@ export default function BlogPage() {
           <div className="text-center mb-12">
             <h1
               className="text-4xl md:text-5xl font-bold mb-4 transition-colors"
-              style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+              style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 102, 204)' }}
             >
               {t('blogSection.title')}
             </h1>
             <p
               className="text-lg transition-colors"
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(74, 85, 104)' }}
             >
               {t('blogSection.subtitle')}
             </p>

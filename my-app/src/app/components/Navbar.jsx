@@ -45,9 +45,9 @@ export default function Navbar() {
     // Evitar render hasta que esté montado para que las clases dark funcionen
     if (!mounted) {
         return (
-            <nav className="fixed top-0 left-0 w-full border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 z-50 transition-colors">
+            <nav className="fixed top-0 left-0 w-full border-b bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 z-50 transition-colors" style={{ backgroundColor: 'rgb(255, 255, 255)' }}>
                 <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-                    <a href="/" className="text-xl font-semibold text-black dark:text-white transition-colors">
+                    <a href="/" className="text-xl font-semibold text-slate-900 dark:text-slate-100 transition-colors">
                         Daniel Bonilla Mosquera - DEV
                     </a>
                 </div>
@@ -59,8 +59,8 @@ export default function Navbar() {
     <nav 
       className="fixed top-0 left-0 w-full border-b z-50 transition-colors"
       style={{
-        backgroundColor: isDark ? 'rgb(24, 24, 27)' : 'rgb(255, 255, 255)',
-        borderColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(228, 228, 231)'
+        backgroundColor: isDark ? 'rgb(15, 23, 42)' : 'rgb(255, 255, 255)',
+        borderColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(226, 232, 240)'
       }}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
@@ -69,7 +69,7 @@ export default function Navbar() {
         <Link
           href={`/${locale}`}
           className="text-xl font-semibold transition-colors text-left"
-          style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+          style={{ color: isDark ? 'rgb(241, 245, 249)' : 'rgb(26, 26, 26)' }}
         >
           Daniel Bonilla Mosquera - DEV
         </Link>
@@ -79,36 +79,36 @@ export default function Navbar() {
           <button
             onClick={() => handleNavigateToSection('projects')}
             className="transition text-left"
-            style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
-            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
-            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
+            style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
+            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'}
+            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)'}
           >
             {t('projects')}
           </button>
           <button
             onClick={() => handleNavigateToSection('about')}
             className="transition text-left"
-            style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
-            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
-            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
+            style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
+            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'}
+            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)'}
           >
             {t('About Me')}
           </button>
           <Link
             href={`/${locale}/blog`}
             className="transition text-left"
-            style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
-            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
-            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
+            style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
+            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'}
+            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)'}
           >
             {t('blog')}
           </Link>
           <button
             onClick={() => handleNavigateToSection('contact')}
             className="transition text-left"
-            style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
-            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}
-            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)'}
+            style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
+            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'}
+            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)'}
           >
             {t('contact')}
           </button>
@@ -140,25 +140,34 @@ export default function Navbar() {
           menuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
-          backgroundColor: isDark ? 'rgb(24, 24, 27)' : 'rgb(255, 255, 255)'
+          backgroundColor: isDark ? 'rgb(15, 23, 42)' : 'rgb(255, 255, 255)'
         }}
       >
         <div className="flex flex-col h-full">
           {/* Header de la sidebar con botón cerrar */}
           <div 
             className="flex items-center justify-between p-4 border-b"
-            style={{ borderColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(228, 228, 231)' }}
+            style={{ borderColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(226, 232, 240)' }}
           >
             <span 
               className="text-lg font-semibold"
-              style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+              style={{ color: isDark ? 'rgb(241, 245, 249)' : 'rgb(26, 26, 26)' }}
             >
               Menú
             </span>
             <button
               onClick={() => setMenuOpen(false)}
-              className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
-              style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+              className="p-2 rounded-lg transition"
+              style={{ 
+                color: isDark ? 'rgb(241, 245, 249)' : 'rgb(26, 26, 26)',
+                backgroundColor: 'transparent'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(245, 247, 250)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }}
             >
               <X size={22} />
             </button>
@@ -168,14 +177,14 @@ export default function Navbar() {
           <div className="flex flex-col gap-2 p-4 flex-1">
             <button
               onClick={() => handleNavigateToSection('projects')}
-              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
+              className="px-4 py-3 rounded-lg transition text-left w-full"
+              style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
               onMouseEnter={(e) => {
-                e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
-                e.target.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(244, 244, 245)';
+                e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                e.target.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(230, 244, 255)';
               }}
               onMouseLeave={(e) => {
-                e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
+                e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)';
                 e.target.style.backgroundColor = 'transparent';
               }}
             >
@@ -183,14 +192,14 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => handleNavigateToSection('about')}
-              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
+              className="px-4 py-3 rounded-lg transition text-left w-full"
+              style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
               onMouseEnter={(e) => {
-                e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
-                e.target.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(244, 244, 245)';
+                e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                e.target.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(230, 244, 255)';
               }}
               onMouseLeave={(e) => {
-                e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
+                e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)';
                 e.target.style.backgroundColor = 'transparent';
               }}
             >
@@ -199,14 +208,14 @@ export default function Navbar() {
             <Link
               href={`/${locale}/blog`}
               onClick={() => setMenuOpen(false)}
-              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
+              className="px-4 py-3 rounded-lg transition text-left w-full"
+              style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
               onMouseEnter={(e) => {
-                e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
-                e.target.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(244, 244, 245)';
+                e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                e.target.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(230, 244, 255)';
               }}
               onMouseLeave={(e) => {
-                e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
+                e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)';
                 e.target.style.backgroundColor = 'transparent';
               }}
             >
@@ -214,14 +223,14 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => handleNavigateToSection('contact')}
-              className="hover:bg-zinc-100 dark:hover:bg-zinc-800 px-4 py-3 rounded-lg transition text-left w-full"
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)' }}
+              className="px-4 py-3 rounded-lg transition text-left w-full"
+              style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
               onMouseEnter={(e) => {
-                e.target.style.color = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
-                e.target.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(244, 244, 245)';
+                e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                e.target.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(230, 244, 255)';
               }}
               onMouseLeave={(e) => {
-                e.target.style.color = isDark ? 'rgb(209, 213, 219)' : 'rgb(0, 0, 0)';
+                e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)';
                 e.target.style.backgroundColor = 'transparent';
               }}
             >

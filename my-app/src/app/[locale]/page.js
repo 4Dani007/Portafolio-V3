@@ -150,19 +150,19 @@ export default function HomePage() {
             <div className="flex flex-col justify-center space-y-6 max-w-lg">
               <h1 
                 className="text-4xl md:text-5xl font-bold transition-colors"
-                style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+                style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 102, 204)' }}
               >
                 {t('hero.title')}
               </h1>
               <p 
                 className="text-xl font-medium transition-colors"
-                style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+                style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(74, 85, 104)' }}
               >
                 {t('hero.subtitle')}
               </p>
               <p 
                 className="text-lg leading-relaxed transition-colors"
-                style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+                style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(74, 85, 104)' }}
               >
                 {t('hero.description')}
               </p>
@@ -203,13 +203,13 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 
               className="text-3xl md:text-4xl font-bold mb-4 transition-colors"
-              style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+              style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 102, 204)' }}
             >
               {t('projectsSection.title')}
             </h2>
             <p 
               className="text-lg transition-colors"
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(74, 85, 104)' }}
             >
               {t('projectsSection.subtitle')}
             </p>
@@ -286,14 +286,14 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 
-                className="text-3xl md:text-4xl font-bold mb-6 transition-colors"
-                style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+              className="text-3xl md:text-4xl font-bold mb-6 transition-colors"
+              style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 102, 204)' }}
               >
                 {t('aboutSection.title')}
               </h2>
               <p 
                 className="text-lg leading-relaxed mb-6 transition-colors"
-                style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+                style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(74, 85, 104)' }}
               >
                 {t('aboutSection.description')}
               </p>
@@ -355,13 +355,13 @@ export default function HomePage() {
         <div className="w-full max-w-4xl mx-auto text-center">
           <h2 
             className="text-3xl md:text-4xl font-bold mb-4 transition-colors"
-            style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+            style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 102, 204)' }}
           >
             {t('contactSection.title')}
           </h2>
           <p 
             className="text-lg mb-12 transition-colors"
-            style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+            style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(74, 85, 104)' }}
           >
             {t('contactSection.subtitle')}
           </p>
@@ -372,15 +372,17 @@ export default function HomePage() {
               href={process.env.NEXT_PUBLIC_CONTACT_EMAIL ? `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}` : "#"}
               className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
               style={{
-                backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-                borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
-                color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+                borderColor: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+                color: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                e.currentTarget.style.backgroundColor = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                e.currentTarget.style.color = 'rgb(255, 255, 255)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                e.currentTarget.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)';
+                e.currentTarget.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
               }}
               onClick={(e) => {
                 if (!process.env.NEXT_PUBLIC_CONTACT_EMAIL) {
@@ -401,15 +403,17 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
                 style={{
-                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
-                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                  backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+                  color: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                  e.currentTarget.style.color = 'rgb(255, 255, 255)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)';
+                  e.currentTarget.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
                 }}
               >
                 <Linkedin size={20} />
@@ -425,15 +429,17 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
                 style={{
-                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
-                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                  backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+                  color: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                  e.currentTarget.style.color = 'rgb(255, 255, 255)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)';
+                  e.currentTarget.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
                 }}
               >
                 <Github size={20} />
@@ -449,15 +455,17 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
                 style={{
-                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
-                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                  backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+                  color: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                  e.currentTarget.style.color = 'rgb(255, 255, 255)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)';
+                  e.currentTarget.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
                 }}
               >
                 <Instagram size={20} />
@@ -473,15 +481,17 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-6 py-3 rounded-lg border transition-all hover:scale-105"
                 style={{
-                  backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-                  borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)',
-                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                  backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+                  color: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                  e.currentTarget.style.color = 'rgb(255, 255, 255)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)';
+                  e.currentTarget.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)';
+                  e.currentTarget.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
                 }}
               >
                 <Twitter size={20} />

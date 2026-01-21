@@ -41,8 +41,21 @@ export default function BlogCard({ post }) {
       <article
         className="rounded-lg border transition-all hover:shadow-lg hover:scale-[1.02] flex flex-col h-full cursor-pointer overflow-hidden"
         style={{
-          backgroundColor: isDark ? 'rgb(39, 39, 42)' : 'rgb(255, 255, 255)',
-          borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)'
+          backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+          borderColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(0, 102, 204)',
+          borderWidth: isDark ? '1px' : '2px'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+          e.currentTarget.style.borderWidth = '2px';
+          e.currentTarget.style.boxShadow = isDark 
+            ? '0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1)' 
+            : '0 10px 15px -3px rgba(0, 102, 204, 0.2), 0 4px 6px -2px rgba(0, 102, 204, 0.1)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(0, 102, 204)';
+          e.currentTarget.style.borderWidth = isDark ? '1px' : '2px';
+          e.currentTarget.style.boxShadow = '';
         }}
       >
         {/* Imagen del post */}
@@ -57,8 +70,8 @@ export default function BlogCard({ post }) {
               <div
                 className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium"
                 style={{
-                  backgroundColor: isDark ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.9)',
-                  color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'
+                  backgroundColor: isDark ? 'rgba(59, 130, 246, 0.9)' : 'rgba(0, 102, 204, 0.9)',
+                  color: 'rgb(255, 255, 255)'
                 }}
               >
                 {post.category}
@@ -77,8 +90,8 @@ export default function BlogCard({ post }) {
                   key={index}
                   className="px-2 py-1 rounded text-xs font-medium transition-colors"
                   style={{
-                    backgroundColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(244, 244, 245)',
-                    color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)'
+                    backgroundColor: isDark ? 'rgb(30, 58, 138)' : 'rgb(230, 244, 255)',
+                    color: isDark ? 'rgb(147, 197, 253)' : 'rgb(0, 102, 204)'
                   }}
                 >
                   {tag}
@@ -90,7 +103,7 @@ export default function BlogCard({ post }) {
           {/* Título */}
           <h3
             className="text-xl font-bold mb-3 transition-colors line-clamp-2"
-            style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)' }}
+            style={{ color: isDark ? 'rgb(241, 245, 249)' : 'rgb(0, 102, 204)' }}
           >
             {post.title}
           </h3>
@@ -99,7 +112,7 @@ export default function BlogCard({ post }) {
           {post.excerpt && (
             <p
               className="text-sm mb-4 line-clamp-3 transition-colors flex-grow"
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+              style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
             >
               {post.excerpt}
             </p>
@@ -107,7 +120,7 @@ export default function BlogCard({ post }) {
 
           {/* Footer con fecha y tiempo de lectura */}
           <div className="flex items-center justify-between mt-auto pt-4 border-t"
-            style={{ borderColor: isDark ? 'rgb(63, 63, 70)' : 'rgb(228, 228, 231)' }}
+            style={{ borderColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(226, 232, 240)' }}
           >
             <div className="flex items-center gap-4 text-xs"
               style={{ color: isDark ? 'rgb(161, 161, 170)' : 'rgb(113, 113, 122)' }}
@@ -127,7 +140,7 @@ export default function BlogCard({ post }) {
             </div>
             <ArrowRight
               size={16}
-              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(63, 63, 70)' }}
+              style={{ color: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)' }}
             />
           </div>
         </div>
