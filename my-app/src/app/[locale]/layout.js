@@ -70,6 +70,9 @@ export async function generateMetadata({ params }) {
         'en': `${baseUrl}/en`,
       },
     },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    },
   };
 }
 

@@ -25,6 +25,7 @@ NEXT_PUBLIC_TWITTER_URL=https://twitter.com/tu-perfil  # Opcional
 ```env
 NEXT_PUBLIC_SITE_URL=https://dev-4daniel.vercel.app  # Tu dominio de producción
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX  # Tu ID de Google Analytics
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=tu-codigo-de-verificacion  # Código de verificación de Google Search Console (opcional)
 ```
 
 ## 📝 Configuración en Vercel
