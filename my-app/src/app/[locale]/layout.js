@@ -12,14 +12,14 @@ export async function generateMetadata({ params }) {
   
   return {
     title: isES 
-      ? 'Daniel Bonilla Mosquera - Desarrollador Junior | Portfolio'
-      : 'Daniel Bonilla Mosquera - Junior Developer | Portfolio',
+      ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack Junior | Portfolio'
+      : 'Daniel Bonilla Mosquera - Junior Full Stack Developer | Portfolio',
     description: isES
-      ? 'Desarrollador Junior especializado en metodologías BIM con experiencia en APIs de Autodesk (Revit API, Forge/APS) y automatización de workflows en proyectos de construcción.'
-      : 'Junior Developer specialized in BIM methodologies with experience in Autodesk APIs (Revit API, Forge/APS) and workflow automation in construction projects.',
+      ? 'Desarrollador Full Stack Junior con experiencia en React, Next.js, Python y Flask. Construyo aplicaciones web, integro APIs y automatizo procesos.'
+      : 'Junior Full Stack Developer with experience in React, Next.js, Python, and Flask. I build web applications, integrate APIs, and automate workflows.',
     keywords: isES
-      ? 'desarrollador, BIM, Autodesk API, Revit API, Forge, APS, construcción, automatización, portfolio'
-      : 'developer, BIM, Autodesk API, Revit API, Forge, APS, construction, automation, portfolio',
+      ? 'desarrollador full stack, React, Next.js, Python, Flask, APIs, automatización, portfolio, frontend, backend'
+      : 'full stack developer, React, Next.js, Python, Flask, APIs, automation, portfolio, frontend, backend',
     authors: [{ name: 'Daniel Bonilla Mosquera' }],
     creator: 'Daniel Bonilla Mosquera',
     openGraph: {
@@ -28,11 +28,11 @@ export async function generateMetadata({ params }) {
       url: `${baseUrl}/${locale}`,
       siteName: 'Daniel Bonilla - Portfolio',
       title: isES 
-        ? 'Daniel Bonilla Mosquera - Desarrollador Junior'
-        : 'Daniel Bonilla Mosquera - Junior Developer',
+        ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack Junior'
+        : 'Daniel Bonilla Mosquera - Junior Full Stack Developer',
       description: isES
-        ? 'Desarrollador Junior especializado en metodologías BIM con experiencia en APIs de Autodesk'
-        : 'Junior Developer specialized in BIM methodologies with experience in Autodesk APIs',
+        ? 'Desarrollador Full Stack Junior con experiencia en React, Next.js, Python y automatización con APIs'
+        : 'Junior Full Stack Developer with experience in React, Next.js, Python, and API automation',
       images: [
         {
           url: `${baseUrl}/images/sketch-draw.png`,
@@ -45,11 +45,11 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title: isES 
-        ? 'Daniel Bonilla Mosquera - Desarrollador Junior'
-        : 'Daniel Bonilla Mosquera - Junior Developer',
+        ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack Junior'
+        : 'Daniel Bonilla Mosquera - Junior Full Stack Developer',
       description: isES
-        ? 'Desarrollador Junior especializado en metodologías BIM'
-        : 'Junior Developer specialized in BIM methodologies',
+        ? 'Desarrollador Full Stack Junior | React, Next.js, Python y APIs'
+        : 'Junior Full Stack Developer | React, Next.js, Python and APIs',
       images: [`${baseUrl}/images/sketch-draw.png`],
     },
     robots: {

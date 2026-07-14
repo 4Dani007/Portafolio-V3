@@ -1,14 +1,14 @@
 {
     "introduction": "Hola, soy Daniel Bonilla",
-    "profession": "Desarrollador Junior",
-    "description": "Desarrollador Junior con experiencia en desarrollo de software para metodologias BIM, sólido manejo de APIs de Autodesk (Revit API, Forge/APS), y conocimiento en automatización de flujos de trabajo para optimizar procesos en proyectos de construcción.",
+    "profession": "Desarrollador Full Stack Junior",
+    "description": "Desarrollador Full Stack Junior con experiencia en React, Next.js y Python. Construyo aplicaciones web, integro APIs y automatizo procesos para resolver problemas reales en distintos entornos.",
     "projects": "Proyectos",
     "contact": "Contacto",
     "About Me": "Sobre mí",
     "hero": {
         "title": "Hola, soy Daniel Bonilla",
-        "subtitle": "Desarrollador Junior",
-        "description": "Desarrollador Junior con experiencia en desarrollo de software para metodologias BIM, sólido manejo de APIs de Autodesk (Revit API, Forge/APS), y conocimiento en automatización de flujos de trabajo para optimizar procesos en proyectos de construcción."
+        "subtitle": "Desarrollador Full Stack Junior",
+        "description": "Construyo aplicaciones web con React y Next.js, desarrollo backends con Python y Flask, e integro APIs para automatizar flujos de trabajo. Me apasiona crear soluciones que conecten frontend, backend y servicios externos."
     },
     "projectsSection": {
         "title": "Proyectos",
@@ -17,7 +17,7 @@
     },
     "aboutSection": {
         "title": "Sobre Mí",
-        "description": "Soy un Desarrollador Junior especializado en metodologias BIM con experiencia en APIs de Autodesk. Me enfoco en automatizar flujos de trabajo y optimizar procesos en proyectos de construcción.",
+        "description": "Soy un desarrollador Full Stack Junior enfocado en construir productos web completos: interfaces con React, lógica de negocio en Python y conexión con APIs de terceros. También tengo experiencia aplicando estas habilidades en entornos de construcción e integraciones empresariales.",
         "skills": "Habilidades",
         "experience": "Experiencia"
     },
@@ -34,7 +34,7 @@
     "blog": "Blog",
     "blogSection": {
         "title": "Blog",
-        "subtitle": "Artículos sobre desarrollo, BIM y Autodesk APIs",
+        "subtitle": "Artículos sobre desarrollo web, APIs y automatización",
         "readMore": "Leer más",
         "backToBlog": "Volver al blog",
         "publishedOn": "Publicado el",

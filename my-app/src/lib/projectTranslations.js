@@ -2,12 +2,12 @@ const projectTranslations = {
 
   'custom-1': {
         title: {
-          es: 'Herramientas de gestion BIM360 y Autodesk Construction Cloud',
-          en: 'BIM360 and Autodesk Construction Cloud management tools'
+          es: 'Suite de herramientas de gestión empresarial',
+          en: 'Enterprise management tools suite'
         },
         description: {
-          es: 'Suite interna de herramientas desarrollada para optimizar la administración de proyectos en BIM360 y Autodesk Construction Cloud mediante integraciones con Autodesk Platform Services.',
-          en: 'Internal suite of tools developed to optimize project management in BIM360 and Autodesk Construction Cloud through integrations with Autodesk Platform Services.'
+          es: 'Aplicación full stack para automatizar operaciones administrativas: frontend en React, backend en Flask y orquestación de APIs REST de terceros.',
+          en: 'Full stack application to automate administrative operations: React frontend, Flask backend, and third-party REST API orchestration.'
         },
         additionalInfo: {
           es: {
@@ -15,17 +15,18 @@ const projectTranslations = {
             content: '<strong>Objetivo:</strong><br>Reducir tareas manuales, mejorar la trazabilidad y centralizar operaciones administrativas relacionadas con usuarios, permisos y proyectos.<br><br><strong>Mi rol:</strong>',
             items: [
               'Desarrollo frontend en React para interfaces de visualización masiva.',
-              'Implementación backend en Flask para orquestar operaciones con Autodesk API.',
-              'Gestión de autenticación con tokens (2-legged y 3-legged).',
-              'Desarrollo de scripts Python para operaciones masivas',
+              'Implementación backend en Flask para orquestar operaciones con APIs REST.',
+              'Gestión de autenticación OAuth (2-legged y 3-legged).',
+              'Desarrollo de scripts Python para operaciones masivas.',
               'Documentación técnica y flujos en Postman para uso interno del equipo.'
             ],
-            content2: '<strong>APIs utilizadas:</strong>',
+            content2: '<strong>Stack y APIs:</strong>',
             items2: [
-              'Autodesk Platform Services (APS)',
-              'Autodesk Construction Cloud API',
-              'Autodesk BIM360 API',
-              'Data Management API'
+              'React (frontend)',
+              'Flask (backend)',
+              'Python (scripts de automatización)',
+              'REST APIs de plataformas empresariales',
+              'OAuth 2.0 / tokens de acceso'
             ],
             content3: '<strong>Características principales:</strong>',
             items3: [
@@ -47,17 +48,18 @@ const projectTranslations = {
             content: '<strong>Objective:</strong><br>Reduce manual tasks, improve traceability, and centralize administrative operations related to users, permissions, and projects.<br><br><strong>My role:</strong>',
             items: [
               'Frontend development in React for massive visualization interfaces.',
-              'Backend implementation in Flask to orchestrate operations with Autodesk API.',
-              'Authentication management with tokens (2-legged and 3-legged).',
-              'Development of Python scripts for massive operations',
+              'Backend implementation in Flask to orchestrate REST API operations.',
+              'OAuth authentication management (2-legged and 3-legged).',
+              'Development of Python scripts for bulk operations.',
               'Technical documentation and flows in Postman for internal team use.'
             ],
-            content2: '<strong>Used APIs:</strong>',
+            content2: '<strong>Stack and APIs:</strong>',
             items2: [
-              'Autodesk Platform Services (APS)',
-              'Autodesk Construction Cloud API',
-              'Autodesk BIM360 API',
-              'Data Management API'
+              'React (frontend)',
+              'Flask (backend)',
+              'Python (automation scripts)',
+              'Enterprise platform REST APIs',
+              'OAuth 2.0 / access tokens'
             ],
             content3: '<strong>Main features:</strong>',
             items3: [
@@ -82,8 +84,8 @@ const projectTranslations = {
             en: 'Personal Portfolio'
         },
         description: {
-            es: 'Portafolio personal desarrollado con Next.js y React',
-            en: 'Personal portfolio developed with Next.js and React'
+            es: 'Portafolio personal full stack desarrollado con Next.js, React y Tailwind CSS',
+            en: 'Full stack personal portfolio built with Next.js, React, and Tailwind CSS'
         }
     },
 

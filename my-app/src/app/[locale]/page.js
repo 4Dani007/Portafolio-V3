@@ -307,7 +307,7 @@ export default function HomePage() {
                     {t('aboutSection.skills')}
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {['React', 'Next.js', 'TypeScript', 'Autodesk API', 'BIM'].map((skill) => (
+                    {['React', 'Next.js', 'Python', 'Flask', 'TypeScript', 'APIs REST'].map((skill) => (
                       <span
                         key={skill}
                         className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"

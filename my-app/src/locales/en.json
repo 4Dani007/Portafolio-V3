@@ -1,14 +1,14 @@
 {
     "introduction": "Hello, I'm Daniel Bonilla",
-        "profession": "Junior Developer",
-        "description": "Junior Developer with experience in developing software for BIM methodologies, solid knowledge of Autodesk API (Revit API, Forge/APS), and knowledge in automating workflows to optimize processes in construction projects.",
+    "profession": "Junior Full Stack Developer",
+    "description": "Junior Full Stack Developer with experience in React, Next.js, and Python. I build web applications, integrate APIs, and automate workflows to solve real-world problems across different domains.",
     "projects": "Projects",
-    "contact": "Contact", 
+    "contact": "Contact",
     "About Me": "About Me",
     "hero": {
         "title": "Hello, I'm Daniel Bonilla",
-        "subtitle": "Junior Developer",
-        "description": "Junior Developer with experience in developing software for BIM methodologies, solid knowledge of Autodesk API (Revit API, Forge/APS), and knowledge in automating workflows to optimize processes in construction projects."
+        "subtitle": "Junior Full Stack Developer",
+        "description": "I build web applications with React and Next.js, develop backends with Python and Flask, and integrate APIs to automate workflows. I'm passionate about creating solutions that connect frontend, backend, and external services."
     },
     "projectsSection": {
         "title": "Projects",
@@ -17,7 +17,7 @@
     },
     "aboutSection": {
         "title": "About Me",
-        "description": "I'm a Junior Developer specialized in BIM methodologies with experience in Autodesk APIs. I focus on automating workflows and optimizing processes in construction projects.",
+        "description": "I'm a Junior Full Stack Developer focused on building complete web products: React interfaces, Python business logic, and third-party API integrations. I also have experience applying these skills in construction environments and enterprise integrations.",
         "skills": "Skills",
         "experience": "Experience"
     },
@@ -34,7 +34,7 @@
     "blog": "Blog",
     "blogSection": {
         "title": "Blog",
-        "subtitle": "Articles about development, BIM and Autodesk APIs",
+        "subtitle": "Articles about web development, APIs, and automation",
         "readMore": "Read more",
         "backToBlog": "Back to blog",
         "publishedOn": "Published on",
