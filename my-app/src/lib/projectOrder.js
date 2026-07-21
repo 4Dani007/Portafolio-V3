@@ -1,8 +1,8 @@
 const projectOrder = {
   'Portafolio-V3': 1,
   'OpenAI_Prueba_I': 2,
-  'proyecto_redes': 4,
-  'CADHUBEV': 5,
+  'proyecto_redes': 5,
+  'CADHUBEV': 6,
 };
 
 /**

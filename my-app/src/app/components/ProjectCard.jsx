@@ -1,7 +1,7 @@
 'use client';
 import { ExternalLink, Github, Star, GitFork, Calendar, Code } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { getProjectTitle, getProjectDescription, getProjectImage } from '../../lib/projectTranslations';
 
 /**
@@ -21,6 +21,7 @@ import { getProjectTitle, getProjectDescription, getProjectImage } from '../../l
 export default function ProjectCard({ project, onClick }) {
   const { isDark } = useTheme();
   const locale = useLocale();
+  const t = useTranslations('projectsSection');
 
   if (!project) {
     return null;
@@ -90,6 +91,17 @@ export default function ProjectCard({ project, onClick }) {
             alt={translatedTitle}
             className="w-full h-full object-cover transition-transform hover:scale-105"
           />
+          {project.isPrivate && (
+            <div
+              className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-medium"
+              style={{
+                backgroundColor: isDark ? 'rgba(100, 116, 139, 0.95)' : 'rgba(71, 85, 105, 0.9)',
+                color: 'rgb(255, 255, 255)',
+              }}
+            >
+              {t('privateBadge')}
+            </div>
+          )}
         </div>
       )}
 
@@ -203,7 +215,8 @@ export default function ProjectCard({ project, onClick }) {
         </div>
       )}
 
-      {/* Stats (Stars y Forks) */}
+      {/* Stats (Stars y Forks) — solo repos públicos de GitHub */}
+      {!project.isCustom && (
       <div className="flex items-center gap-4 mb-4">
         <div className="flex items-center gap-1">
           <Star 
@@ -245,6 +258,7 @@ export default function ProjectCard({ project, onClick }) {
           </div>
         )}
       </div>
+      )}
 
       {/* Topics/Tags - Se empuja hacia abajo con mt-auto */}
       {project.topics && project.topics.length > 0 && (

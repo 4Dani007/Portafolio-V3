@@ -130,6 +130,7 @@
         "title": "Projects",
         "subtitle": "Real cases where I've applied these solutions",
         "comingSoon": "More projects coming soon...",
+        "privateBadge": "Private project",
         "caseStudy": {
             "title": "Case summary",
             "problem": "Problem",
@@ -154,13 +155,48 @@
             "Admin dashboards",
             "Improving existing applications"
         ],
+        "quickActions": "Direct contact",
+        "scheduleMeeting": "Schedule meeting (30 min)",
+        "whatsapp": "WhatsApp",
+        "phone": "Phone",
         "cta": "Request a meeting",
         "email": "Email",
         "linkedin": "LinkedIn",
         "github": "GitHub",
         "instagram": "Instagram",
         "twitter": "Twitter",
-        "emailNotConfigured": "Email not configured. Please set NEXT_PUBLIC_CONTACT_EMAIL in environment variables."
+        "whatsappMessage": "Hi Daniel, I saw your portfolio and would like to talk about a project.",
+        "emailNotConfigured": "Email not configured. Please set NEXT_PUBLIC_CONTACT_EMAIL in environment variables.",
+        "form": {
+            "title": "Send me a message",
+            "name": "Name",
+            "email": "Email",
+            "subject": "Project type",
+            "subjectPlaceholder": "Select an option",
+            "subjectOptions": [
+                "Custom web systems",
+                "Automations",
+                "API integrations",
+                "Admin dashboards",
+                "Improving existing applications",
+                "Other"
+            ],
+            "message": "Message",
+            "messagePlaceholder": "Briefly tell me what you need...",
+            "submit": "Send message",
+            "sending": "Sending...",
+            "success": "Message sent! I'll get back to you soon.",
+            "error": "Could not send. Try WhatsApp or email instead."
+        },
+        "floatingCta": {
+            "open": "Contact options",
+            "close": "Close menu",
+            "whatsapp": "WhatsApp",
+            "schedule": "Schedule meeting",
+            "email": "Email",
+            "contact": "Go to contact",
+            "whatsappMessage": "Hi Daniel, I saw your portfolio and would like to talk about a project."
+        }
     },
     "blog": "Blog",
     "blogSection": {

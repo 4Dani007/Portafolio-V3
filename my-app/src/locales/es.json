@@ -130,6 +130,7 @@
         "title": "Proyectos",
         "subtitle": "Casos reales donde he aplicado estas soluciones",
         "comingSoon": "Más proyectos próximamente...",
+        "privateBadge": "Proyecto privado",
         "caseStudy": {
             "title": "Resumen del caso",
             "problem": "Problema",
@@ -154,13 +155,48 @@
             "Paneles administrativos",
             "Mejora de aplicaciones existentes"
         ],
+        "quickActions": "Contacto directo",
+        "scheduleMeeting": "Agendar reunión (30 min)",
+        "whatsapp": "WhatsApp",
+        "phone": "Teléfono",
         "cta": "Solicitar una reunión",
         "email": "Correo",
         "linkedin": "LinkedIn",
         "github": "GitHub",
         "instagram": "Instagram",
         "twitter": "Twitter",
-        "emailNotConfigured": "Email no configurado. Por favor, configura NEXT_PUBLIC_CONTACT_EMAIL en las variables de entorno."
+        "whatsappMessage": "Hola Daniel, vi tu portafolio y me gustaría hablar sobre un proyecto.",
+        "emailNotConfigured": "Email no configurado. Por favor, configura NEXT_PUBLIC_CONTACT_EMAIL en las variables de entorno.",
+        "form": {
+            "title": "Envíame un mensaje",
+            "name": "Nombre",
+            "email": "Correo",
+            "subject": "Tipo de proyecto",
+            "subjectPlaceholder": "Selecciona una opción",
+            "subjectOptions": [
+                "Sistemas web a medida",
+                "Automatizaciones",
+                "Integraciones con APIs",
+                "Paneles administrativos",
+                "Mejora de aplicaciones existentes",
+                "Otro"
+            ],
+            "message": "Mensaje",
+            "messagePlaceholder": "Cuéntame brevemente qué necesitas...",
+            "submit": "Enviar mensaje",
+            "sending": "Enviando...",
+            "success": "¡Mensaje enviado! Te responderé pronto.",
+            "error": "No se pudo enviar. Intenta por WhatsApp o correo."
+        },
+        "floatingCta": {
+            "open": "Opciones de contacto",
+            "close": "Cerrar menú",
+            "whatsapp": "WhatsApp",
+            "schedule": "Agendar reunión",
+            "email": "Correo",
+            "contact": "Ir a contacto",
+            "whatsappMessage": "Hola Daniel, vi tu portafolio y me gustaría hablar sobre un proyecto."
+        }
     },
     "blog": "Blog",
     "blogSection": {

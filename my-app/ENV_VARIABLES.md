@@ -14,12 +14,22 @@ GITHUB_TOKEN=ghp_tu_token_aqui  # Opcional pero recomendado para evitar rate lim
 
 ### Contacto
 ```env
-NEXT_PUBLIC_CONTACT_EMAIL=tu-email@ejemplo.com
-NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/in/tu-perfil
+NEXT_PUBLIC_CONTACT_EMAIL=daniel.bonilla070704@gmail.com
+NEXT_PUBLIC_CONTACT_PHONE=+573006417651
+NEXT_PUBLIC_WHATSAPP_NUMBER=573006417651
+NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/in/daniel-bonilla-a0b98831b/
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/daniel-bonilla070704/30min
+NEXT_PUBLIC_FORM_ACCESS_KEY=tu_access_key_de_web3forms
 NEXT_PUBLIC_GITHUB_URL=https://github.com/tu-usuario
 NEXT_PUBLIC_INSTAGRAM_URL=https://instagram.com/tu-perfil  # Opcional
 NEXT_PUBLIC_TWITTER_URL=https://twitter.com/tu-perfil  # Opcional
 ```
+
+**Formulario de contacto:** usa [Web3Forms](https://web3forms.com). Registra tu email y coloca el Access Key en `NEXT_PUBLIC_FORM_ACCESS_KEY`.
+
+**Calendly:** crea un evento en [Calendly](https://calendly.com) y usa su URL en `NEXT_PUBLIC_CALENDLY_URL`.
+
+**WhatsApp:** número en formato internacional sin `+` (ej. `573006417651` para Colombia).
 
 ### SEO y Analytics
 ```env
