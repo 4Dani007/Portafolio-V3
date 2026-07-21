@@ -4,7 +4,7 @@ export default function manifest() {
   return {
     name: 'Daniel Bonilla - Portfolio',
     short_name: 'DB Portfolio',
-    description: 'Portfolio de Daniel Bonilla Mosquera - Desarrollador Full Stack Junior',
+    description: 'Portfolio de Daniel Bonilla Mosquera - Desarrollador Full Stack',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

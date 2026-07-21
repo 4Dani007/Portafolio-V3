@@ -12,14 +12,14 @@ export async function generateMetadata({ params }) {
   
   return {
     title: isES 
-      ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack Junior | Portfolio'
-      : 'Daniel Bonilla Mosquera - Junior Full Stack Developer | Portfolio',
+      ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack | Aplicaciones web y automatización'
+      : 'Daniel Bonilla Mosquera - Full Stack Developer | Web apps and automation',
     description: isES
-      ? 'Desarrollador Full Stack Junior con experiencia en React, Next.js, Python y Flask. Construyo aplicaciones web, integro APIs y automatizo procesos.'
-      : 'Junior Full Stack Developer with experience in React, Next.js, Python, and Flask. I build web applications, integrate APIs, and automate workflows.',
+      ? 'Desarrollo aplicaciones web a medida, automatizo procesos e integro APIs para empresas y emprendedores. React, Next.js y Python.'
+      : 'I build custom web applications, automate processes, and integrate APIs for businesses and entrepreneurs. React, Next.js, and Python.',
     keywords: isES
-      ? 'desarrollador full stack, React, Next.js, Python, Flask, APIs, automatización, portfolio, frontend, backend'
-      : 'full stack developer, React, Next.js, Python, Flask, APIs, automation, portfolio, frontend, backend',
+      ? 'desarrollador full stack, aplicaciones web, automatización, APIs, React, Next.js, Python, sistemas a medida, Colombia'
+      : 'full stack developer, web applications, automation, APIs, React, Next.js, Python, custom systems',
     authors: [{ name: 'Daniel Bonilla Mosquera' }],
     creator: 'Daniel Bonilla Mosquera',
     openGraph: {
@@ -28,11 +28,11 @@ export async function generateMetadata({ params }) {
       url: `${baseUrl}/${locale}`,
       siteName: 'Daniel Bonilla - Portfolio',
       title: isES 
-        ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack Junior'
-        : 'Daniel Bonilla Mosquera - Junior Full Stack Developer',
+        ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack'
+        : 'Daniel Bonilla Mosquera - Full Stack Developer',
       description: isES
-        ? 'Desarrollador Full Stack Junior con experiencia en React, Next.js, Python y automatización con APIs'
-        : 'Junior Full Stack Developer with experience in React, Next.js, Python, and API automation',
+        ? 'Aplicaciones web a medida, automatización de procesos e integración de APIs para empresas'
+        : 'Custom web applications, process automation, and API integrations for businesses',
       images: [
         {
           url: `${baseUrl}/images/sketch-draw.png`,
@@ -45,11 +45,11 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title: isES 
-        ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack Junior'
-        : 'Daniel Bonilla Mosquera - Junior Full Stack Developer',
+        ? 'Daniel Bonilla Mosquera - Desarrollador Full Stack'
+        : 'Daniel Bonilla Mosquera - Full Stack Developer',
       description: isES
-        ? 'Desarrollador Full Stack Junior | React, Next.js, Python y APIs'
-        : 'Junior Full Stack Developer | React, Next.js, Python and APIs',
+        ? 'Aplicaciones web, automatización e integración de APIs | React, Next.js, Python'
+        : 'Web applications, automation, and API integrations | React, Next.js, Python',
       images: [`${baseUrl}/images/sketch-draw.png`],
     },
     robots: {

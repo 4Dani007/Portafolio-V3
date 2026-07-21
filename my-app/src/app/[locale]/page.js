@@ -3,10 +3,11 @@ import Navbar from '../components/Navbar';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useTheme } from '../../hooks/useTheme';
-import { Mail, Linkedin, Github, Instagram, Twitter } from 'lucide-react';
+import { Mail, Linkedin, Github, Instagram, Twitter, Globe, Workflow, Plug, LayoutDashboard, Wrench } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import ProjectModal from '../components/ProjectModal';
+import HeroDashboard from '../components/HeroDashboard';
 import { getCustomProjects } from '../../lib/customProjects';
 import { getProjectOrder } from '../../lib/projectOrder';
 
@@ -18,6 +19,26 @@ export default function HomePage() {
   const [reposError, setReposError] = useState(null);
   const [allProjects, setAllProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
+
+  const serviceItems = [
+    { key: 'web', icon: Globe },
+    { key: 'automation', icon: Workflow },
+    { key: 'apis', icon: Plug },
+    { key: 'dashboards', icon: LayoutDashboard },
+    { key: 'maintenance', icon: Wrench },
+  ];
+
+  const contactTopics = t.raw('contactSection.topics');
 
   // Manejar scroll a secciones cuando se navega con hash
   useEffect(() => {
@@ -147,9 +168,9 @@ export default function HomePage() {
         <div className="w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Columna izquierda */}
-            <div className="flex flex-col justify-center space-y-6 max-w-lg">
+            <div className="flex flex-col justify-center space-y-6 max-w-xl">
               <h1 
-                className="text-4xl md:text-5xl font-bold transition-colors"
+                className="text-4xl md:text-5xl font-bold transition-colors leading-tight"
                 style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 102, 204)' }}
               >
                 {t('hero.title')}
@@ -166,36 +187,104 @@ export default function HomePage() {
               >
                 {t('hero.description')}
               </p>
+              <div className="flex flex-wrap gap-4 pt-2">
+                <button
+                  onClick={() => scrollToSection('projects')}
+                  className="px-6 py-3 rounded-lg font-medium transition-all hover:scale-105"
+                  style={{
+                    backgroundColor: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+                    color: 'rgb(255, 255, 255)',
+                  }}
+                >
+                  {t('hero.ctaProjects')}
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="px-6 py-3 rounded-lg font-medium border transition-all hover:scale-105"
+                  style={{
+                    backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+                    borderColor: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+                    color: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                    e.currentTarget.style.color = 'rgb(255, 255, 255)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)';
+                    e.currentTarget.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                  }}
+                >
+                  {t('hero.ctaContact')}
+                </button>
+              </div>
             </div>
 
             {/* Columna derecha */}
-            <div className="flex justify-center">
-              <div className="relative max-w-md w-full h-auto">
-                {!isDark ? (
-                  <Image 
-                    src="/images/sketch-draw-white.webp"
-                    alt="Sketch drawing"
-                    width={500}
-                    height={500}
-                    className="rounded-lg shadow-xl w-full h-auto transition-opacity"
-                    priority
-                  />
-                ) : (
-                  <Image 
-                    src="/images/sketch-draw.png"
-                    alt="Sketch drawing"
-                    width={500}
-                    height={500}
-                    className="rounded-lg shadow-xl w-full h-auto transition-opacity"
-                    priority
-                  />
-                )}
-              </div>
+            <div className="flex justify-center lg:justify-end w-full">
+              <HeroDashboard />
             </div>
           </div>
         </div>
       </section>
 
+      {/* Services Section */}
+      <section id="services" className="flex items-center justify-center p-6 py-20">
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4 transition-colors"
+              style={{ color: isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 102, 204)' }}
+            >
+              {t('servicesSection.title')}
+            </h2>
+            <p
+              className="text-lg transition-colors max-w-2xl mx-auto"
+              style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(74, 85, 104)' }}
+            >
+              {t('servicesSection.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {serviceItems.map(({ key, icon: Icon }) => (
+              <div
+                key={key}
+                className="rounded-lg p-6 border transition-all hover:shadow-lg hover:scale-[1.02]"
+                style={{
+                  backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+                  borderColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(0, 102, 204)',
+                  borderWidth: isDark ? '1px' : '2px',
+                }}
+              >
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+                  style={{
+                    backgroundColor: isDark ? 'rgb(30, 58, 138)' : 'rgb(230, 244, 255)',
+                  }}
+                >
+                  <Icon
+                    size={24}
+                    style={{ color: isDark ? 'rgb(147, 197, 253)' : 'rgb(0, 102, 204)' }}
+                  />
+                </div>
+                <h3
+                  className="text-lg font-semibold mb-2 transition-colors"
+                  style={{ color: isDark ? 'rgb(241, 245, 249)' : 'rgb(0, 102, 204)' }}
+                >
+                  {t(`servicesSection.${key}.title`)}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed transition-colors"
+                  style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
+                >
+                  {t(`servicesSection.${key}.description`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Projects Section */}
       <section id="projects" className="min-h-screen flex items-center justify-center p-6 py-20">
@@ -360,11 +449,56 @@ export default function HomePage() {
             {t('contactSection.title')}
           </h2>
           <p 
-            className="text-lg mb-12 transition-colors"
+            className="text-lg mb-8 transition-colors"
             style={{ color: isDark ? 'rgb(209, 213, 219)' : 'rgb(74, 85, 104)' }}
           >
             {t('contactSection.subtitle')}
           </p>
+
+          <div
+            className="rounded-lg p-6 mb-8 text-left max-w-md mx-auto border"
+            style={{
+              backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
+              borderColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(226, 232, 240)',
+            }}
+          >
+            <p
+              className="font-medium mb-4 transition-colors"
+              style={{ color: isDark ? 'rgb(241, 245, 249)' : 'rgb(26, 26, 26)' }}
+            >
+              {t('contactSection.intro')}
+            </p>
+            <ul className="space-y-2">
+              {Array.isArray(contactTopics) && contactTopics.map((topic) => (
+                <li
+                  key={topic}
+                  className="flex items-center gap-2 text-sm transition-colors"
+                  style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
+                >
+                  <span style={{ color: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)' }}>✓</span>
+                  {topic}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a
+            href={process.env.NEXT_PUBLIC_CONTACT_EMAIL ? `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}` : '#'}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-medium transition-all hover:scale-105 mb-10"
+            style={{
+              backgroundColor: isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)',
+              color: 'rgb(255, 255, 255)',
+            }}
+            onClick={(e) => {
+              if (!process.env.NEXT_PUBLIC_CONTACT_EMAIL) {
+                e.preventDefault();
+                alert(t('contactSection.emailNotConfigured'));
+              }
+            }}
+          >
+            <Mail size={20} />
+            {t('contactSection.cta')}
+          </a>
           
           <div className="flex flex-wrap gap-4 justify-center items-center">
             {/* Email - Siempre visible */}

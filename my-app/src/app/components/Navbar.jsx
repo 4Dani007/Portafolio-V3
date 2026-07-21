@@ -77,6 +77,15 @@ export default function Navbar() {
         {/* Enlaces (Desktop) */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <button
+            onClick={() => handleNavigateToSection('services')}
+            className="transition text-left"
+            style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
+            onMouseEnter={(e) => e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)'}
+            onMouseLeave={(e) => e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)'}
+          >
+            {t('services')}
+          </button>
+          <button
             onClick={() => handleNavigateToSection('projects')}
             className="transition text-left"
             style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
@@ -175,6 +184,21 @@ export default function Navbar() {
 
           {/* Contenido de la sidebar */}
           <div className="flex flex-col gap-2 p-4 flex-1">
+            <button
+              onClick={() => handleNavigateToSection('services')}
+              className="px-4 py-3 rounded-lg transition text-left w-full"
+              style={{ color: isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)' }}
+              onMouseEnter={(e) => {
+                e.target.style.color = isDark ? 'rgb(59, 130, 246)' : 'rgb(0, 102, 204)';
+                e.target.style.backgroundColor = isDark ? 'rgb(30, 41, 59)' : 'rgb(230, 244, 255)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = isDark ? 'rgb(203, 213, 225)' : 'rgb(74, 85, 104)';
+                e.target.style.backgroundColor = 'transparent';
+              }}
+            >
+              {t('services')}
+            </button>
             <button
               onClick={() => handleNavigateToSection('projects')}
               className="px-4 py-3 rounded-lg transition text-left w-full"

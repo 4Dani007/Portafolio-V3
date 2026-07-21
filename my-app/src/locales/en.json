@@ -1,29 +1,160 @@
 {
     "introduction": "Hello, I'm Daniel Bonilla",
-    "profession": "Junior Full Stack Developer",
-    "description": "Junior Full Stack Developer with experience in React, Next.js, and Python. I build web applications, integrate APIs, and automate workflows to solve real-world problems across different domains.",
+    "profession": "Full Stack Developer",
+    "description": "I help businesses and entrepreneurs digitize processes through web applications, automation, and API integrations.",
     "projects": "Projects",
+    "services": "Services",
     "contact": "Contact",
     "About Me": "About Me",
     "hero": {
-        "title": "Hello, I'm Daniel Bonilla",
-        "subtitle": "Junior Full Stack Developer",
-        "description": "I build web applications with React and Next.js, develop backends with Python and Flask, and integrate APIs to automate workflows. I'm passionate about creating solutions that connect frontend, backend, and external services."
+        "title": "I build web applications that automate business processes",
+        "subtitle": "Daniel Bonilla · Full Stack Developer",
+        "description": "I help businesses and entrepreneurs digitize processes, integrate APIs, and reduce manual work with custom web systems. Specialized in React, Next.js, and Python.",
+        "ctaProjects": "View projects",
+        "ctaContact": "Let's talk"
+    },
+    "heroDashboard": {
+        "title": "Operations panel",
+        "apiConnected": "API connected",
+        "stack": "React · Python · APIs",
+        "metrics": {
+            "processes": {
+                "label": "Processes",
+                "value": "12"
+            },
+            "apis": {
+                "label": "Active APIs",
+                "value": "3"
+            },
+            "timeSaved": {
+                "label": "Time saved",
+                "value": "4h/wk"
+            }
+        },
+        "chart": {
+            "title": "Weekly activity",
+            "days": ["M", "T", "W", "T", "F", "S", "S"]
+        },
+        "tabs": {
+            "projects": "Projects",
+            "users": "Users",
+            "reports": "Reports"
+        },
+        "statusLabels": {
+            "active": "Active",
+            "pending": "Pending",
+            "synced": "Synced"
+        },
+        "tabContent": {
+            "projects": {
+                "metrics": {
+                    "processes": { "label": "Processes", "value": "12" },
+                    "apis": { "label": "Active APIs", "value": "3" },
+                    "timeSaved": { "label": "Time saved", "value": "4h/wk" }
+                },
+                "chart": { "title": "Weekly activity" },
+                "table": {
+                    "col1": "Project",
+                    "col2": "Client",
+                    "col3": "Status",
+                    "rows": [
+                        { "primary": "Web portal", "secondary": "Company A", "status": "active" },
+                        { "primary": "Inventory", "secondary": "Logistics", "status": "synced" },
+                        { "primary": "Permissions", "secondary": "Internal admin", "status": "pending" }
+                    ]
+                }
+            },
+            "users": {
+                "metrics": {
+                    "processes": { "label": "Users", "value": "48" },
+                    "apis": { "label": "Active today", "value": "12" },
+                    "timeSaved": { "label": "Invitations", "value": "3" }
+                },
+                "chart": { "title": "Daily logins" },
+                "table": {
+                    "col1": "User",
+                    "col2": "Role",
+                    "col3": "Status",
+                    "rows": [
+                        { "primary": "Ana G.", "secondary": "Administrator", "status": "active" },
+                        { "primary": "Carlos M.", "secondary": "Editor", "status": "synced" },
+                        { "primary": "Laura P.", "secondary": "Guest", "status": "pending" }
+                    ]
+                }
+            },
+            "reports": {
+                "metrics": {
+                    "processes": { "label": "Reports", "value": "8" },
+                    "apis": { "label": "Exports", "value": "24" },
+                    "timeSaved": { "label": "Automated", "value": "95%" }
+                },
+                "chart": { "title": "Monthly generation" },
+                "table": {
+                    "col1": "Report",
+                    "col2": "Frequency",
+                    "col3": "Status",
+                    "rows": [
+                        { "primary": "Operations", "secondary": "Weekly", "status": "synced" },
+                        { "primary": "Permissions", "secondary": "Monthly", "status": "active" },
+                        { "primary": "APIs", "secondary": "Daily", "status": "pending" }
+                    ]
+                }
+            }
+        }
+    },
+    "servicesSection": {
+        "title": "Services",
+        "subtitle": "Web solutions tailored to your business needs",
+        "web": {
+            "title": "Custom web applications",
+            "description": "Internal systems, portals, and web tools designed to solve specific problems in your business."
+        },
+        "automation": {
+            "title": "Process automation",
+            "description": "I reduce repetitive manual tasks with scripts and automated workflows that save time and prevent errors."
+        },
+        "apis": {
+            "title": "API integrations",
+            "description": "I connect your business with external services, enterprise platforms, and tools you already use."
+        },
+        "dashboards": {
+            "title": "Admin dashboards",
+            "description": "Dashboards and interfaces to visualize data, manage users, and control operations in one place."
+        },
+        "maintenance": {
+            "title": "Maintenance and improvements",
+            "description": "I update, optimize, and extend existing applications so they keep growing with your business."
+        }
     },
     "projectsSection": {
         "title": "Projects",
-        "subtitle": "Some of my recent work",
-        "comingSoon": "More projects coming soon..."
+        "subtitle": "Real cases where I've applied these solutions",
+        "comingSoon": "More projects coming soon...",
+        "caseStudy": {
+            "title": "Case summary",
+            "problem": "Problem",
+            "solution": "Solution",
+            "result": "Result"
+        }
     },
     "aboutSection": {
         "title": "About Me",
-        "description": "I'm a Junior Full Stack Developer focused on building complete web products: React interfaces, Python business logic, and third-party API integrations. I also have experience applying these skills in construction environments and enterprise integrations.",
+        "description": "I'm a Full Stack Developer focused on building complete web products: React interfaces, Python business logic, and third-party API integrations. I currently develop web applications while studying Software Engineering, with experience in enterprise integrations and process automation.",
         "skills": "Skills",
         "experience": "Experience"
     },
     "contactSection": {
-        "title": "Get in Touch",
-        "subtitle": "Let's work together",
+        "title": "Have an idea?",
+        "subtitle": "Tell me what process you want to digitize or automate",
+        "intro": "We can talk about:",
+        "topics": [
+            "Custom web systems",
+            "Automations",
+            "API integrations",
+            "Admin dashboards",
+            "Improving existing applications"
+        ],
+        "cta": "Request a meeting",
         "email": "Email",
         "linkedin": "LinkedIn",
         "github": "GitHub",

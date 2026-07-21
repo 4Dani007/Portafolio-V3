@@ -1,29 +1,160 @@
 {
     "introduction": "Hola, soy Daniel Bonilla",
-    "profession": "Desarrollador Full Stack Junior",
-    "description": "Desarrollador Full Stack Junior con experiencia en React, Next.js y Python. Construyo aplicaciones web, integro APIs y automatizo procesos para resolver problemas reales en distintos entornos.",
+    "profession": "Desarrollador Full Stack",
+    "description": "Ayudo a empresas y emprendedores a digitalizar procesos mediante aplicaciones web, automatización e integración de APIs.",
     "projects": "Proyectos",
+    "services": "Servicios",
     "contact": "Contacto",
     "About Me": "Sobre mí",
     "hero": {
-        "title": "Hola, soy Daniel Bonilla",
-        "subtitle": "Desarrollador Full Stack Junior",
-        "description": "Construyo aplicaciones web con React y Next.js, desarrollo backends con Python y Flask, e integro APIs para automatizar flujos de trabajo. Me apasiona crear soluciones que conecten frontend, backend y servicios externos."
+        "title": "Desarrollo aplicaciones web que automatizan procesos empresariales",
+        "subtitle": "Daniel Bonilla · Full Stack Developer",
+        "description": "Ayudo a empresas y emprendedores a digitalizar procesos, integrar APIs y reducir trabajo manual con sistemas web a medida. Especializado en React, Next.js y Python.",
+        "ctaProjects": "Ver proyectos",
+        "ctaContact": "Hablemos"
+    },
+    "heroDashboard": {
+        "title": "Panel de operaciones",
+        "apiConnected": "API conectada",
+        "stack": "React · Python · APIs",
+        "metrics": {
+            "processes": {
+                "label": "Procesos",
+                "value": "12"
+            },
+            "apis": {
+                "label": "APIs activas",
+                "value": "3"
+            },
+            "timeSaved": {
+                "label": "Tiempo ahorrado",
+                "value": "4h/sem"
+            }
+        },
+        "chart": {
+            "title": "Actividad semanal",
+            "days": ["L", "M", "X", "J", "V", "S", "D"]
+        },
+        "tabs": {
+            "projects": "Proyectos",
+            "users": "Usuarios",
+            "reports": "Reportes"
+        },
+        "statusLabels": {
+            "active": "Activo",
+            "pending": "Pendiente",
+            "synced": "Sincronizado"
+        },
+        "tabContent": {
+            "projects": {
+                "metrics": {
+                    "processes": { "label": "Procesos", "value": "12" },
+                    "apis": { "label": "APIs activas", "value": "3" },
+                    "timeSaved": { "label": "Tiempo ahorrado", "value": "4h/sem" }
+                },
+                "chart": { "title": "Actividad semanal" },
+                "table": {
+                    "col1": "Proyecto",
+                    "col2": "Cliente",
+                    "col3": "Estado",
+                    "rows": [
+                        { "primary": "Portal web", "secondary": "Empresa A", "status": "active" },
+                        { "primary": "Inventario", "secondary": "Logística", "status": "synced" },
+                        { "primary": "Permisos", "secondary": "Admin interno", "status": "pending" }
+                    ]
+                }
+            },
+            "users": {
+                "metrics": {
+                    "processes": { "label": "Usuarios", "value": "48" },
+                    "apis": { "label": "Activos hoy", "value": "12" },
+                    "timeSaved": { "label": "Invitaciones", "value": "3" }
+                },
+                "chart": { "title": "Accesos diarios" },
+                "table": {
+                    "col1": "Usuario",
+                    "col2": "Rol",
+                    "col3": "Estado",
+                    "rows": [
+                        { "primary": "Ana G.", "secondary": "Administrador", "status": "active" },
+                        { "primary": "Carlos M.", "secondary": "Editor", "status": "synced" },
+                        { "primary": "Laura P.", "secondary": "Invitado", "status": "pending" }
+                    ]
+                }
+            },
+            "reports": {
+                "metrics": {
+                    "processes": { "label": "Reportes", "value": "8" },
+                    "apis": { "label": "Exportaciones", "value": "24" },
+                    "timeSaved": { "label": "Automatizado", "value": "95%" }
+                },
+                "chart": { "title": "Generación mensual" },
+                "table": {
+                    "col1": "Reporte",
+                    "col2": "Frecuencia",
+                    "col3": "Estado",
+                    "rows": [
+                        { "primary": "Operaciones", "secondary": "Semanal", "status": "synced" },
+                        { "primary": "Permisos", "secondary": "Mensual", "status": "active" },
+                        { "primary": "APIs", "secondary": "Diario", "status": "pending" }
+                    ]
+                }
+            }
+        }
+    },
+    "servicesSection": {
+        "title": "Servicios",
+        "subtitle": "Soluciones web adaptadas a las necesidades de tu negocio",
+        "web": {
+            "title": "Aplicaciones web a medida",
+            "description": "Sistemas internos, portales y herramientas web diseñadas para resolver problemas concretos de tu empresa."
+        },
+        "automation": {
+            "title": "Automatización de procesos",
+            "description": "Reduzco tareas manuales repetitivas con scripts y flujos automatizados que ahorran tiempo y evitan errores."
+        },
+        "apis": {
+            "title": "Integración con APIs",
+            "description": "Conecto tu negocio con servicios externos, plataformas empresariales y herramientas que ya utilizas."
+        },
+        "dashboards": {
+            "title": "Paneles administrativos",
+            "description": "Dashboards e interfaces para visualizar datos, gestionar usuarios y controlar operaciones en un solo lugar."
+        },
+        "maintenance": {
+            "title": "Mantenimiento y mejoras",
+            "description": "Actualizo, optimizo y amplío aplicaciones existentes para que sigan creciendo con tu negocio."
+        }
     },
     "projectsSection": {
         "title": "Proyectos",
-        "subtitle": "Algunos de mis trabajos recientes",
-        "comingSoon": "Más proyectos próximamente..."
+        "subtitle": "Casos reales donde he aplicado estas soluciones",
+        "comingSoon": "Más proyectos próximamente...",
+        "caseStudy": {
+            "title": "Resumen del caso",
+            "problem": "Problema",
+            "solution": "Solución",
+            "result": "Resultado"
+        }
     },
     "aboutSection": {
         "title": "Sobre Mí",
-        "description": "Soy un desarrollador Full Stack Junior enfocado en construir productos web completos: interfaces con React, lógica de negocio en Python y conexión con APIs de terceros. También tengo experiencia aplicando estas habilidades en entornos de construcción e integraciones empresariales.",
+        "description": "Soy desarrollador Full Stack enfocado en construir productos web completos: interfaces con React, lógica de negocio en Python y conexión con APIs de terceros. Actualmente desarrollo aplicaciones web mientras estudio Ingeniería de Software, con experiencia en integraciones empresariales y automatización de procesos.",
         "skills": "Habilidades",
         "experience": "Experiencia"
     },
     "contactSection": {
-        "title": "Contáctame",
-        "subtitle": "Trabajemos juntos",
+        "title": "¿Tienes una idea?",
+        "subtitle": "Cuéntame qué proceso quieres digitalizar o automatizar",
+        "intro": "Podemos hablar sobre:",
+        "topics": [
+            "Sistemas web a medida",
+            "Automatizaciones",
+            "Integraciones con APIs",
+            "Paneles administrativos",
+            "Mejora de aplicaciones existentes"
+        ],
+        "cta": "Solicitar una reunión",
         "email": "Correo",
         "linkedin": "LinkedIn",
         "github": "GitHub",

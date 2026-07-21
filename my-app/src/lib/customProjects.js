@@ -5,6 +5,7 @@ const customProjects = [
         name: 'custom-1',
         description: 'Suite de herramientas full stack para automatizar operaciones administrativas mediante integraciones con APIs empresariales',
         language: 'Python • React • Flask • REST APIs',
+        image: '/images/projects/enterprise.svg',
         updatedAt: '2025-11-21T00:00:00Z',
         order: 3,
         isCustom: true

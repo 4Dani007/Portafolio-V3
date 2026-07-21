@@ -2,7 +2,7 @@
 import { ExternalLink, Github, Star, GitFork, Calendar, Code } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
 import { useLocale } from 'next-intl';
-import { getProjectTitle, getProjectDescription } from '../../lib/projectTranslations';
+import { getProjectTitle, getProjectDescription, getProjectImage } from '../../lib/projectTranslations';
 
 /**
  * Componente para mostrar una tarjeta de proyecto de GitHub
@@ -39,6 +39,8 @@ export default function ProjectCard({ project, onClick }) {
     project.description || ''
   );
 
+  const projectImage = project.image || getProjectImage(project.name);
+
   // Formatear fecha de actualización
   const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -52,7 +54,7 @@ export default function ProjectCard({ project, onClick }) {
 
   return (
     <div
-      className="rounded-lg p-6 border transition-all hover:shadow-lg hover:scale-[1.02] flex flex-col h-full cursor-pointer"
+      className="rounded-lg border transition-all hover:shadow-lg hover:scale-[1.02] flex flex-col h-full cursor-pointer overflow-hidden"
       style={{
         backgroundColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(255, 255, 255)',
         borderColor: isDark ? 'rgb(30, 41, 59)' : 'rgb(0, 102, 204)',
@@ -81,6 +83,17 @@ export default function ProjectCard({ project, onClick }) {
       }}
       aria-label={`Ver detalles de ${translatedTitle}`}
     >
+      {projectImage && (
+        <div className="relative w-full h-40 overflow-hidden flex-shrink-0">
+          <img
+            src={projectImage}
+            alt={translatedTitle}
+            className="w-full h-full object-cover transition-transform hover:scale-105"
+          />
+        </div>
+      )}
+
+      <div className="p-6 flex flex-col flex-grow">
       {/* Header con nombre y enlaces */}
       <div className="flex items-start justify-between mb-4">
         <h3 
@@ -260,6 +273,7 @@ export default function ProjectCard({ project, onClick }) {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 }

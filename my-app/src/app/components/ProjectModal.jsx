@@ -1,8 +1,8 @@
 'use client';
-import { X, ExternalLink, Github, Star, GitFork, Calendar, Code, Globe, Clock, Eye, AlertCircle, FileText, GitBranch } from 'lucide-react';
+import { X, ExternalLink, Github, Star, GitFork, Calendar, Code, Globe, Clock, Eye, AlertCircle, FileText, GitBranch, Target, Lightbulb, TrendingUp } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
-import { useLocale } from 'next-intl';
-import { getProjectTitle, getProjectDescription, getProjectAdditionalInfo } from '../../lib/projectTranslations';
+import { useLocale, useTranslations } from 'next-intl';
+import { getProjectTitle, getProjectDescription, getProjectAdditionalInfo, getProjectCaseStudy, getProjectImage } from '../../lib/projectTranslations';
 import { useEffect } from 'react';
 
 /**
@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 export default function ProjectModal({ project, onClose }) {
   const { isDark } = useTheme();
   const locale = useLocale();
+  const t = useTranslations('projectsSection.caseStudy');
 
   // Bloquear scroll del body cuando el modal está abierto
   useEffect(() => {
@@ -49,6 +50,9 @@ export default function ProjectModal({ project, onClose }) {
     locale,
     project.additionalInfo || null
   );
+
+  const caseStudy = getProjectCaseStudy(project.name, locale);
+  const projectImage = project.image || getProjectImage(project.name);
 
   // Formatear fechas
   const formatDate = (dateString) => {
@@ -155,7 +159,62 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         {/* Content - Scrollable */}
-        <div className="overflow-y-auto flex-1 p-6">
+        <div className="overflow-y-auto flex-1">
+          {projectImage && (
+            <div className="relative w-full h-48 md:h-56 overflow-hidden">
+              <img
+                src={projectImage}
+                alt={translatedTitle}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+
+          <div className="p-6">
+          {/* Case study */}
+          {caseStudy && (
+            <div className="mb-6">
+              <h3
+                className="text-lg font-semibold mb-4 transition-colors"
+                style={{ color: textColor }}
+              >
+                {t('title')}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  { key: 'problem', label: t('problem'), icon: Target, color: isDark ? 'rgb(248, 113, 113)' : 'rgb(220, 38, 38)' },
+                  { key: 'solution', label: t('solution'), icon: Lightbulb, color: isDark ? 'rgb(96, 165, 250)' : 'rgb(0, 102, 204)' },
+                  { key: 'result', label: t('result'), icon: TrendingUp, color: isDark ? 'rgb(74, 222, 128)' : 'rgb(22, 163, 74)' },
+                ].map(({ key, label, icon: Icon, color }) => (
+                  <div
+                    key={key}
+                    className="p-4 rounded-lg border"
+                    style={{
+                      backgroundColor: tagBg,
+                      borderColor: borderColor,
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon size={18} style={{ color }} />
+                      <span
+                        className="text-sm font-semibold transition-colors"
+                        style={{ color: textColor }}
+                      >
+                        {label}
+                      </span>
+                    </div>
+                    <p
+                      className="text-sm leading-relaxed transition-colors"
+                      style={{ color: secondaryTextColor }}
+                    >
+                      {caseStudy[key]}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Descripción */}
           {translatedDescription && (
             <div className="mb-6">
@@ -505,6 +564,7 @@ export default function ProjectModal({ project, onClose }) {
               })}
             </div>
           )}
+          </div>
         </div>
 
         {/* Footer con botones */}
