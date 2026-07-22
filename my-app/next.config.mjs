@@ -22,8 +22,27 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.js');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   reactCompiler: true,
+  async redirects() {
+    const legacyBlogRedirects = [
+      { oldSlug: 'introduccion-bim-autodesk', newSlug: 'automatizar-procesos-python-flask' },
+      { oldSlug: 'automatizacion-revit-api', newSlug: 'automatizar-procesos-python-flask' },
+      { oldSlug: 'forge-platform-services', newSlug: 'integrar-apis-react-nextjs' },
+    ];
+
+    return legacyBlogRedirects.flatMap(({ oldSlug, newSlug }) => [
+      {
+        source: `/es/blog/${oldSlug}`,
+        destination: `/es/blog/${newSlug}`,
+        permanent: true,
+      },
+      {
+        source: `/en/blog/${oldSlug}`,
+        destination: `/en/blog/${newSlug}`,
+        permanent: true,
+      },
+    ]);
+  },
 };
 
 export default withNextIntl(nextConfig);

@@ -142,7 +142,25 @@
         "title": "About Me",
         "description": "I'm a Full Stack Developer focused on building complete web products: React interfaces, Python business logic, and third-party API integrations. I currently develop web applications while studying Software Engineering, with experience in enterprise integrations and process automation.",
         "skills": "Skills",
-        "experience": "Experience"
+        "experience": "Experience",
+        "codePanel": {
+            "stack": "React · Python · APIs",
+            "success": "✓ Build successful",
+            "snippets": [
+                {
+                    "filename": "api_routes.py",
+                    "code": "from flask import Flask, jsonify\n\napp = Flask(__name__)\n\n@app.route(\"/api/projects\")\ndef get_projects():\n    return jsonify({\"status\": \"ok\"})"
+                },
+                {
+                    "filename": "PortfolioHero.jsx",
+                    "code": "export default function Hero() {\n  return (\n    <section id=\"hero\">\n      <Dashboard />\n    </section>\n  );\n}"
+                },
+                {
+                    "filename": "automation.py",
+                    "code": "def assign_users_bulk(project_id, users):\n    response = api.post(\n        f\"/projects/{project_id}\", users\n    )\n    return response.status == 200"
+                }
+            ]
+        }
     },
     "contactSection": {
         "title": "Have an idea?",

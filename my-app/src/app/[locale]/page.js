@@ -1,7 +1,6 @@
 'use client';
 import Navbar from '../components/Navbar';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { useTheme } from '../../hooks/useTheme';
 import { Mail, Linkedin, Github, Instagram, Twitter, Globe, Workflow, Plug, LayoutDashboard, Wrench, Calendar, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -10,6 +9,7 @@ import ProjectModal from '../components/ProjectModal';
 import HeroDashboard from '../components/HeroDashboard';
 import ContactForm from '../components/ContactForm';
 import FloatingContactCTA from '../components/FloatingContactCTA';
+import AboutCodePanel from '../components/AboutCodePanel';
 import { getCustomProjects, getCustomProjectNames } from '../../lib/customProjects';
 import { getProjectOrder } from '../../lib/projectOrder';
 
@@ -427,26 +427,8 @@ export default function HomePage() {
               </div>
             </div>
             
-            <div className="flex justify-center">
-              <div className="relative max-w-md w-full h-auto">
-                {!isDark ? (
-                  <Image 
-                    src="/images/sketch-draw-white.webp"
-                    alt="About me"
-                    width={400}
-                    height={400}
-                    className="rounded-lg shadow-xl w-full h-auto"
-                  />
-                ) : (
-                  <Image 
-                    src="/images/sketch-draw.png"
-                    alt="About me"
-                    width={400}
-                    height={400}
-                    className="rounded-lg shadow-xl w-full h-auto"
-                  />
-                )}
-              </div>
+            <div className="flex justify-center lg:justify-end w-full">
+              <AboutCodePanel />
             </div>
           </div>
         </div>
